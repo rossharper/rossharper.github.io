@@ -4,21 +4,21 @@
     <meta charset="utf-8">
     <title> |
       rossharper.net</title>
-    <link rel="stylesheet" href="http://localhost:4000/css/style.css">
+    <link rel="stylesheet" href="https://github.rharper.co.uk/css/style.css">
     <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   </head>
   <body>
 
     <header id="bannerheader">
     <div id="bannerheading">
-        <a href="http://localhost:4000">rossharper.net</a>
+        <a href="https://github.rharper.co.uk">rossharper.net</a>
     </div>
 </header>
     <nav>
     <div id="navitems">
         <ul>
-            <li><a href="http://localhost:4000">Home</a></li>
-            <li><a href="http://localhost:4000/about">About</a></li>
+            <li><a href="https://github.rharper.co.uk/">Home</a></li>
+            <li><a href="https://github.rharper.co.uk/about">About</a></li>
         </ul>
     </div>
 </nav>
@@ -50,7 +50,7 @@
 
 <h3 id="sniffing-the-signals">Sniffing the Signals</h3>
 
-<p><a href="http://localhost:4000/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg"><img src="http://localhost:4000/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg" alt="433MHz transmitter and receiver" title="433MHz transmitter and receiver" class="aligncenter wp-image-551" width="600" height="600" /></a></p>
+<p><a href="https://github.rharper.co.uk/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg"><img src="https://github.rharper.co.uk/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg" alt="433MHz transmitter and receiver" title="433MHz transmitter and receiver" class="aligncenter wp-image-551" width="600" height="600" /></a></p>
 
 <p>Once I had my 433MHz transmitter and receiver, I wired them up using a prototyping breadboard to my Raspberry Pi in a vain attempt to simply read the signals straight out of the air. The plan was to listen to the signal on the receiver’s data port whilst operating the thermostat to trigger its signals. No luck. The software I was using on the Raspberry Pi did not produce any results. Presumably the encoding used by my thermostat is non-standard. (I don’t remember the software off the top of my head. RC Switch, perhaps?)</p>
 
@@ -67,7 +67,7 @@
 
 <p>I didn’t go to the extent that Steven Hale did, I just wired up one channel, and didn’t bother with shrink wrap to make it look professional. This is probably a one-off tool for me.</p>
 
-<p><a href="http://localhost:4000/img/wp-imports/2015/11/Photo-02-04-2015-19-29-42-e1448313674238.jpg"><img src="http://localhost:4000/img/wp-imports/2015/11/Photo-02-04-2015-19-29-42-e1448313674238.jpg" alt="Ghetto Logic Analyser" title="Ghetto Logic Analyser" class="aligncenter wp-image-539" width="450" height="600" /></a></p>
+<p><a href="https://github.rharper.co.uk/img/wp-imports/2015/11/Photo-02-04-2015-19-29-42-e1448313674238.jpg"><img src="https://github.rharper.co.uk/img/wp-imports/2015/11/Photo-02-04-2015-19-29-42-e1448313674238.jpg" alt="Ghetto Logic Analyser" title="Ghetto Logic Analyser" class="aligncenter wp-image-539" width="450" height="600" /></a></p>
 
 <p>Then:</p>
 
@@ -81,7 +81,7 @@
 
 <p>Once I’d recorded some signals, I found them amongst the noise, and zoomed in to see them. But something was wrong…</p>
 
-<p><a href="http://localhost:4000/img/wp-imports/2015/11/Photo-02-04-2015-19-30-28.png"><img src="http://localhost:4000/img/wp-imports/2015/11/Photo-02-04-2015-19-30-28.png" alt="First signal" title="First signal" class="aligncenter wp-image-542" width="600" height="375" /></a></p>
+<p><a href="https://github.rharper.co.uk/img/wp-imports/2015/11/Photo-02-04-2015-19-30-28.png"><img src="https://github.rharper.co.uk/img/wp-imports/2015/11/Photo-02-04-2015-19-30-28.png" alt="First signal" title="First signal" class="aligncenter wp-image-542" width="600" height="375" /></a></p>
 
 <p>This wasn’t the clear, decipherable, square-wave I was expecting.</p>
 
@@ -89,7 +89,7 @@
 
 <p>I modified the analyser to add a second 18k resistor on the unused lead. This time in series, rather than across the data and ground leads.</p>
 
-<p><a href="http://localhost:4000/img/wp-imports/2015/11/Photo-23-11-2015-21-11-04-e1448313787989.jpg"><img src="http://localhost:4000/img/wp-imports/2015/11/Photo-23-11-2015-21-11-04-e1448313787989.jpg" alt="Ghetto Logic Analyser V2" title="Ghetto Logic Analyser V2" class="aligncenter wp-image-543" width="600" height="450" /></a></p>
+<p><a href="https://github.rharper.co.uk/img/wp-imports/2015/11/Photo-23-11-2015-21-11-04-e1448313787989.jpg"><img src="https://github.rharper.co.uk/img/wp-imports/2015/11/Photo-23-11-2015-21-11-04-e1448313787989.jpg" alt="Ghetto Logic Analyser V2" title="Ghetto Logic Analyser V2" class="aligncenter wp-image-543" width="600" height="450" /></a></p>
 
 <p><em>(<strong>NOTE</strong>: I was probably taking a bit of a risk here, that my soundcard might have been damaged by the higher voltages. But I figured “it’s 5V from a Raspberry Pi — what’s the worst that can happen?”. If you are following me, <strong>proceed with caution</strong> — I am no electronics engineer!)</em></p>
 
@@ -97,14 +97,14 @@
 
 <p>Here is the boiler ON signal when the noise either side is removed:</p>
 
-<p><a href="http://localhost:4000/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.16.08.png"><img src="http://localhost:4000/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.16.08.png" alt="Tranmission received" title="Tranmission received" class="aligncenter wp-image-544" width="600" height="368" /></a></p>
+<p><a href="https://github.rharper.co.uk/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.16.08.png"><img src="https://github.rharper.co.uk/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.16.08.png" alt="Tranmission received" title="Tranmission received" class="aligncenter wp-image-544" width="600" height="368" /></a></p>
 
 <!-- markdownlint-disable MD036 -->
 <p><em>(I later flipped HIGH/LOW back in my program, I just found the signal easier to read this way round)</em></p>
 
 <p>There appear to be a number of packets. Zooming in to an individual packet, we can see the individual HIGH/LOW signals.</p>
 
-<p><a href="http://localhost:4000/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.26.04.png"><img src="http://localhost:4000/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.26.04.png" alt="Zoomed in view of a packet" title="Zoomed in view of a packet" class="aligncenter wp-image-546" width="600" height="368" /></a></p>
+<p><a href="https://github.rharper.co.uk/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.26.04.png"><img src="https://github.rharper.co.uk/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.26.04.png" alt="Zoomed in view of a packet" title="Zoomed in view of a packet" class="aligncenter wp-image-546" width="600" height="368" /></a></p>
 
 <p>The signal is pulled LOW for a period before the packet begins. There are also two different lengths of pulse: one must represent a binary ‘1’ and the other a ‘0’. I <em>guessed</em> that a long pulse would be a ‘1’ and the short pulse a ‘0’. Then I got to work reading all the individual 1s and 0s in the packets. I discovered that the packets were repeating and that for the ON signal there were just two packets:</p>
 
@@ -195,13 +195,13 @@
 
     <footer>
     <div class="postfooterfeaturebox">
-        <span class="postfootertitle">Categories:</span>&nbsp;<a href="http://localhost:4000/category/heating-project">Heating Project</a>, <a href="http://localhost:4000/category/iot">IoT</a>, <a href="http://localhost:4000/category/technology">Technology</a>
+        <span class="postfootertitle">Categories:</span>&nbsp;<a href="https://github.rharper.co.uk/categories/heating-project">Heating Project</a>, <a href="https://github.rharper.co.uk/categories/iot">IoT</a>, <a href="https://github.rharper.co.uk/categories/technology">Technology</a>
         <br />
-        <span class="postfootertitle">Tags:</span>&nbsp;<a href="http://localhost:4000/category/433mhz">433MHz</a>, <a href="http://localhost:4000/category/audacity">audacity</a>, <a href="http://localhost:4000/category/boiler">boiler</a>, <a href="http://localhost:4000/category/control">control</a>, <a href="http://localhost:4000/category/electronics">electronics</a>, <a href="http://localhost:4000/category/heating">heating</a>, <a href="http://localhost:4000/category/internet-of-things">Internet of Things</a>, <a href="http://localhost:4000/category/iot">IoT</a>, <a href="http://localhost:4000/category/project">project</a>, <a href="http://localhost:4000/category/radio">radio</a>, <a href="http://localhost:4000/category/raspberry-pi">raspberry pi</a>, <a href="http://localhost:4000/category/rcr10-433">RCR10/433</a>, <a href="http://localhost:4000/category/siemens">siemens</a>, <a href="http://localhost:4000/category/thermostat">thermostat</a>
+        <span class="postfootertitle">Tags:</span>&nbsp;<a href="https://github.rharper.co.uk/tags/433mhz">433MHz</a>, <a href="https://github.rharper.co.uk/tags/audacity">audacity</a>, <a href="https://github.rharper.co.uk/tags/boiler">boiler</a>, <a href="https://github.rharper.co.uk/tags/control">control</a>, <a href="https://github.rharper.co.uk/tags/electronics">electronics</a>, <a href="https://github.rharper.co.uk/tags/heating">heating</a>, <a href="https://github.rharper.co.uk/tags/internet-of-things">Internet of Things</a>, <a href="https://github.rharper.co.uk/tags/iot">IoT</a>, <a href="https://github.rharper.co.uk/tags/project">project</a>, <a href="https://github.rharper.co.uk/tags/radio">radio</a>, <a href="https://github.rharper.co.uk/tags/raspberry-pi">raspberry pi</a>, <a href="https://github.rharper.co.uk/tags/rcr10-433">RCR10/433</a>, <a href="https://github.rharper.co.uk/tags/siemens">siemens</a>, <a href="https://github.rharper.co.uk/tags/thermostat">thermostat</a>
     </div>
     <div class="paginationlinks clearfix">
-        <a href="http://localhost:4000/2014/05/glentress-mountain-biking/" class="paginationprev">&larr; Previous post: Glentress – Mountain Biking</a>
-        <a href="http://localhost:4000/2016/02/parameterized-junit4-unit-tests-in-kotlin/" class="paginationnext">Next post: Parameterized JUnit4 Unit Tests in Kotlin &rarr;</a>
+        <a href="https://github.rharper.co.uk/2014/05/glentress-mountain-biking/" class="paginationprev">&larr; Previous post: Glentress – Mountain Biking</a>
+        <a href="https://github.rharper.co.uk/2016/02/parameterized-junit4-unit-tests-in-kotlin/" class="paginationnext">Next post: Parameterized JUnit4 Unit Tests in Kotlin &rarr;</a>
     </div>
 </footer>
   </article>
@@ -214,105 +214,105 @@
           <ul>
             
             <li>
-              <a href="/category/photography">Photography</a>
+              <a href="https://github.rharper.co.uk/category/photography">Photography</a>
             </li>
             
             <li>
-              <a href="/category/travel">Travel</a>
+              <a href="https://github.rharper.co.uk/category/travel">Travel</a>
             </li>
             
             <li>
-              <a href="/category/wild-camping">Wild Camping</a>
+              <a href="https://github.rharper.co.uk/category/wild-camping">Wild Camping</a>
             </li>
             
             <li>
-              <a href="/category/rewind-from-the-archive">Rewind: From The Archive</a>
+              <a href="https://github.rharper.co.uk/category/rewind-from-the-archive">Rewind: From The Archive</a>
             </li>
             
             <li>
-              <a href="/category/general">General</a>
+              <a href="https://github.rharper.co.uk/category/general">General</a>
             </li>
             
             <li>
-              <a href="/category/programming">Programming</a>
+              <a href="https://github.rharper.co.uk/category/programming">Programming</a>
             </li>
             
             <li>
-              <a href="/category/technology">Technology</a>
+              <a href="https://github.rharper.co.uk/category/technology">Technology</a>
             </li>
             
             <li>
-              <a href="/category/web">Web</a>
+              <a href="https://github.rharper.co.uk/category/web">Web</a>
             </li>
             
             <li>
-              <a href="/category/wordpress">Wordpress</a>
+              <a href="https://github.rharper.co.uk/category/wordpress">Wordpress</a>
             </li>
             
             <li>
-              <a href="/category/cycling">Cycling</a>
+              <a href="https://github.rharper.co.uk/category/cycling">Cycling</a>
             </li>
             
             <li>
-              <a href="/category/mountain-biking">Mountain Biking</a>
+              <a href="https://github.rharper.co.uk/category/mountain-biking">Mountain Biking</a>
             </li>
             
             <li>
-              <a href="/category/heating-project">Heating Project</a>
+              <a href="https://github.rharper.co.uk/category/heating-project">Heating Project</a>
             </li>
             
             <li>
-              <a href="/category/iot">IoT</a>
+              <a href="https://github.rharper.co.uk/category/iot">IoT</a>
             </li>
             
           </ul>
         </div>
         <div class="tagfootlinks">
           <h2 class="footlinktitle">Tags</h2>
-          <a style='font-size: 70%' href='/tag/Alderman's Brow'>Alderman's Brow</a>
-<a style='font-size: 70%' href='/tag/Alderman's Hill'>Alderman's Hill</a>
-<a style='font-size: 126%' href='/tag/Archive'>Archive</a>
-<a style='font-size: 106%' href='/tag/BBC'>BBC</a>
-<a style='font-size: 106%' href='/tag/Bicycle'>Bicycle</a>
-<a style='font-size: 106%' href='/tag/Bike'>Bike</a>
-<a style='font-size: 70%' href='/tag/Cycling'>Cycling</a>
-<a style='font-size: 70%' href='/tag/Dovestone Edge'>Dovestone Edge</a>
-<a style='font-size: 106%' href='/tag/Eglin Lane'>Eglin Lane</a>
-<a style='font-size: 70%' href='/tag/Frozen'>Frozen</a>
-<a style='font-size: 126%' href='/tag/Galloway'>Galloway</a>
-<a style='font-size: 126%' href='/tag/Galloway Forest Park'>Galloway Forest Park</a>
-<a style='font-size: 70%' href='/tag/Hills'>Hills</a>
-<a style='font-size: 70%' href='/tag/Holcombe Moor'>Holcombe Moor</a>
-<a style='font-size: 106%' href='/tag/Hooden's Hill'>Hooden's Hill</a>
-<a style='font-size: 70%' href='/tag/Lake'>Lake</a>
-<a style='font-size: 70%' href='/tag/Memorial'>Memorial</a>
-<a style='font-size: 70%' href='/tag/Peak District'>Peak District</a>
-<a style='font-size: 170%' href='/tag/Photography'>Photography</a>
-<a style='font-size: 126%' href='/tag/Programming'>Programming</a>
-<a style='font-size: 70%' href='/tag/Ramsbottom'>Ramsbottom</a>
-<a style='font-size: 106%' href='/tag/Reservoir'>Reservoir</a>
-<a style='font-size: 126%' href='/tag/Rewind'>Rewind</a>
-<a style='font-size: 106%' href='/tag/Roman Numerals'>Roman Numerals</a>
-<a style='font-size: 70%' href='/tag/Saddleworth Moor'>Saddleworth Moor</a>
-<a style='font-size: 141%' href='/tag/Scotland'>Scotland</a>
-<a style='font-size: 70%' href='/tag/Scout Moor'>Scout Moor</a>
-<a style='font-size: 70%' href='/tag/Sheep'>Sheep</a>
-<a style='font-size: 126%' href='/tag/Snow'>Snow</a>
-<a style='font-size: 106%' href='/tag/StarStaX'>StarStaX</a>
-<a style='font-size: 106%' href='/tag/TDD'>TDD</a>
-<a style='font-size: 106%' href='/tag/Tent'>Tent</a>
-<a style='font-size: 106%' href='/tag/The Dungeon Hills'>The Dungeon Hills</a>
-<a style='font-size: 126%' href='/tag/Travel'>Travel</a>
-<a style='font-size: 106%' href='/tag/Unit Tests'>Unit Tests</a>
-<a style='font-size: 106%' href='/tag/Walking'>Walking</a>
-<a style='font-size: 106%' href='/tag/Wild Camping'>Wild Camping</a>
-<a style='font-size: 126%' href='/tag/Winter'>Winter</a>
-<a style='font-size: 70%' href='/tag/Wirral Way'>Wirral Way</a>
-<a style='font-size: 126%' href='/tag/camping'>camping</a>
-<a style='font-size: 70%' href='/tag/glentress'>glentress</a>
-<a style='font-size: 106%' href='/tag/long exposure'>long exposure</a>
-<a style='font-size: 126%' href='/tag/stars'>stars</a>
-<a style='font-size: 106%' href='/tag/startrails'>startrails</a>
+          <a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Alderman's Brow'>Alderman's Brow</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Alderman's Hill'>Alderman's Hill</a>
+<a style='font-size: 126%' href='https://github.rharper.co.uk/tag/Archive'>Archive</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/BBC'>BBC</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/Bicycle'>Bicycle</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/Bike'>Bike</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Cycling'>Cycling</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Dovestone Edge'>Dovestone Edge</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/Eglin Lane'>Eglin Lane</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Frozen'>Frozen</a>
+<a style='font-size: 126%' href='https://github.rharper.co.uk/tag/Galloway'>Galloway</a>
+<a style='font-size: 126%' href='https://github.rharper.co.uk/tag/Galloway Forest Park'>Galloway Forest Park</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Hills'>Hills</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Holcombe Moor'>Holcombe Moor</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/Hooden's Hill'>Hooden's Hill</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Lake'>Lake</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Memorial'>Memorial</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Peak District'>Peak District</a>
+<a style='font-size: 170%' href='https://github.rharper.co.uk/tag/Photography'>Photography</a>
+<a style='font-size: 126%' href='https://github.rharper.co.uk/tag/Programming'>Programming</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Ramsbottom'>Ramsbottom</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/Reservoir'>Reservoir</a>
+<a style='font-size: 126%' href='https://github.rharper.co.uk/tag/Rewind'>Rewind</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/Roman Numerals'>Roman Numerals</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Saddleworth Moor'>Saddleworth Moor</a>
+<a style='font-size: 141%' href='https://github.rharper.co.uk/tag/Scotland'>Scotland</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Scout Moor'>Scout Moor</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Sheep'>Sheep</a>
+<a style='font-size: 126%' href='https://github.rharper.co.uk/tag/Snow'>Snow</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/StarStaX'>StarStaX</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/TDD'>TDD</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/Tent'>Tent</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/The Dungeon Hills'>The Dungeon Hills</a>
+<a style='font-size: 126%' href='https://github.rharper.co.uk/tag/Travel'>Travel</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/Unit Tests'>Unit Tests</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/Walking'>Walking</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/Wild Camping'>Wild Camping</a>
+<a style='font-size: 126%' href='https://github.rharper.co.uk/tag/Winter'>Winter</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/Wirral Way'>Wirral Way</a>
+<a style='font-size: 126%' href='https://github.rharper.co.uk/tag/camping'>camping</a>
+<a style='font-size: 70%' href='https://github.rharper.co.uk/tag/glentress'>glentress</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/long exposure'>long exposure</a>
+<a style='font-size: 126%' href='https://github.rharper.co.uk/tag/stars'>stars</a>
+<a style='font-size: 106%' href='https://github.rharper.co.uk/tag/startrails'>startrails</a>
 
         </div>
       </div>
