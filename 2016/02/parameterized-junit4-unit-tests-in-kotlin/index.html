@@ -1,0 +1,215 @@
+<!doctype html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> |
+      rossharper.net</title>
+    <link rel="stylesheet" href="http://localhost:4000/css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+
+    <header id="bannerheader">
+    <div id="bannerheading">
+        <a href="http://localhost:4000">rossharper.net</a>
+    </div>
+</header>
+    <nav>
+    <div id="navitems">
+        <ul>
+            <li><a href="http://localhost:4000">Home</a></li>
+            <li><a href="http://localhost:4000/about">About</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+    <main>
+
+  
+  <article>
+    <header>
+    <h2>Parameterized JUnit4 Unit Tests in Kotlin</h2>
+    <p class="postdate">Posted on 
+    Saturday,
+    
+    20th
+    
+    February 2016
+</p>
+</header>
+    <p>(<em><a href="#tldr" title="Jump to the TL;DR of how to create a Parameterized JUnit4 test in Kotlin">Jump to the TL;DR of how to create a Parameterized JUnit4 test in Kotlin</a></em>)</p>
+
+<p>This weekend I’ve been learning a little <em>Kotlin</em> — the <a href="https://kotlinlang.org/" title="Kotlin websire" target="_blank">(relatively) new JVM language from JetBrains</a>. Once I’d worked my through the <em><a href="https://kotlinlang.org/docs/tutorials/koans.html" title="Kotlin Koans" target="_blank">“Koans”</a></em>, I decided to try a simple <a href="https://en.wikipedia.org/wiki/Kata_(programming)" target="_blank">Code Kata</a>. I chose the <a href="http://codingdojo.org/cgi-bin/index.pl?KataRomanNumerals" title="Roman Numerals Kata description on CodingDojo" target="_blank">Roman Numerals Kata</a> for this exercise. Whilst doing this, I wanted to use a parameterised unit test, and had to figure out how to do that in Kotlin… <!--more--> I wont go into the details of the Kata (read the link if you are interested), but in a nutshell, the goal is to write a program that will convert the Arabic numerals we are accustomed to in the modern world to <a href="http://www.novaroma.org/via_romana/numbers.html" title="A description of Roman numeral representation" target="_blank">the representation used by the ancient Romans</a>. For example, you may have noticed Roman Numerals used to denote the year a movie was released: 1977 becomes “MCMLXXVII”.</p>
+
+<p>As I set out on the exercise using <a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">TDD</a>, I got to the point where I had two similar unit tests:</p>
+
+<script src="https://gist.github.com/rossharper/5c8fe130cac356075912.js"></script>
+
+<p>At this point we can see that there is some duplication in the tests. The rest of the tests will follow a similar pattern. Therefore, I wanted to refactor the tests to become <em>parameterised</em> tests — this is what I’d usually do when writing a Java JUnit4 test, after all. In Java, this involves:</p>
+
+<ul>
+  <li>indicating that the <code class="highlighter-rouge">Parameterized</code> test runner should be used</li>
+  <li>adding a static method — denoted by the <code class="highlighter-rouge">@Parameters</code> annotation — that that will provide the collection of test cases containing an array of parameters for each test</li>
+  <li>add a constructor to the test class that will receive the parameters for each test case</li>
+</ul>
+
+<p>It may look a little like this:</p>
+
+<script src="https://gist.github.com/rossharper/6b5a9a414edb00cd12a6.js"></script>
+
+<p><em>(obviously, we’d use better variable names than <code class="highlighter-rouge">paramOne</code> and <code class="highlighter-rouge">paramTwo</code> when doing this for real, I’ve used these here for clarity)</em></p>
+
+<p>Creating a parameterised test in Kotlin is a little different than in Java. The main reason being that <a href="https://kotlinlang.org/docs/reference/classes.html#companion-objects" target="_blank">Kotlin does not have static member functions on classes</a>. However, we can add compatibility for calling Java code, by putting our function in a <em>“companion object”</em>, and annotating it with the <code class="highlighter-rouge">@JvmStatic</code> annotation (<a href="https://kotlinlang.org/docs/reference/java-to-kotlin-interop.html#static-methods" target="_blank">Kotlin Reference</a>).</p>
+
+<p>For example:</p>
+
+<script src="https://gist.github.com/rossharper/cb3e183d0fbaf2e25b10.js"></script>
+
+<p>Therefore, we can create a parameterised Kotlin unit test like so:</p>
+
+<script src="https://gist.github.com/rossharper/8f6c3c169b6b5c23e12c.js"></script>
+
+<p>If you are interested in seeing this in action, you can check out my completed Roman Numerals Kata in Kotlin on Github: <a href="https://github.com/rossharper/RomanNumerals-Kotlin">https://github.com/rossharper/RomanNumerals-Kotlin</a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    git clone https://github.com/rossharper/RomanNumerals-Kotlin.git
+</code></pre></div></div>
+
+<h3 id="tldr">TL;DR</h3>
+
+<p>To create a parameterised unit test in Kotlin:</p>
+
+<ul>
+  <li>annotate the Kotlin test class with <code class="highlighter-rouge">@RunWith(Parameterized::class)</code></li>
+  <li>place the <code class="highlighter-rouge">@Parameterized.Parameters</code> function within a <code class="highlighter-rouge">companion object</code> in the test class</li>
+  <li>annotate the <code class="highlighter-rouge">@Parameterized.@Parameters</code> function with the <code class="highlighter-rouge">@JvmStatic</code> annotation — as Kotlin doesn’t have static functions, this allows Java code to call this Kotlin as if it were a static</li>
+  <li>Use Kotlin’s <code class="highlighter-rouge">Any</code> in place of Java’s <code class="highlighter-rouge">Object</code></li>
+</ul>
+
+    <footer>
+    <div class="postfooterfeaturebox">
+        <span class="postfootertitle">Categories:</span>&nbsp;<a href="http://localhost:4000/category/programming">Programming</a>, <a href="http://localhost:4000/category/technology">Technology</a>
+        <br />
+        <span class="postfootertitle">Tags:</span>&nbsp;<a href="http://localhost:4000/category/java">Java</a>, <a href="http://localhost:4000/category/junit">JUnit</a>, <a href="http://localhost:4000/category/jvm">JVM</a>, <a href="http://localhost:4000/category/kata">Kata</a>, <a href="http://localhost:4000/category/kotlin">Kotlin</a>, <a href="http://localhost:4000/category/programming">Programming</a>, <a href="http://localhost:4000/category/roman-numerals">Roman Numerals</a>, <a href="http://localhost:4000/category/software">Software</a>, <a href="http://localhost:4000/category/tdd">TDD</a>, <a href="http://localhost:4000/category/unit-tests">Unit Tests</a>
+    </div>
+    <div class="paginationlinks clearfix">
+        <a href="http://localhost:4000/2015/11/decoding-a-siemens-rcr10433-thermostat-signal-to-control-a-boiler-from-a-raspberry-pi/" class="paginationprev">&larr; Previous post: Decoding a Siemens RCR10/433 Thermostat Signal to Control a Boiler from a Raspberry Pi</a>
+        <a href="http://localhost:4000/2017/02/can-you-tdd-in-scratch-yes-you-can/" class="paginationnext">Next post: Can you TDD in Scratch? Yes, you can! &rarr;</a>
+    </div>
+</footer>
+  </article>
+
+    </main>
+    <footer>
+      <div class="footlinks clearfix">
+        <div class="categoryfootlinks">
+          <h2 class="footlinktitle">Categories</h2>
+          <ul>
+            
+            <li>
+              <a href="/category/photography">Photography</a>
+            </li>
+            
+            <li>
+              <a href="/category/travel">Travel</a>
+            </li>
+            
+            <li>
+              <a href="/category/wild-camping">Wild Camping</a>
+            </li>
+            
+            <li>
+              <a href="/category/rewind-from-the-archive">Rewind: From The Archive</a>
+            </li>
+            
+            <li>
+              <a href="/category/general">General</a>
+            </li>
+            
+            <li>
+              <a href="/category/programming">Programming</a>
+            </li>
+            
+            <li>
+              <a href="/category/technology">Technology</a>
+            </li>
+            
+            <li>
+              <a href="/category/web">Web</a>
+            </li>
+            
+            <li>
+              <a href="/category/wordpress">Wordpress</a>
+            </li>
+            
+            <li>
+              <a href="/category/cycling">Cycling</a>
+            </li>
+            
+            <li>
+              <a href="/category/mountain-biking">Mountain Biking</a>
+            </li>
+            
+            <li>
+              <a href="/category/heating-project">Heating Project</a>
+            </li>
+            
+            <li>
+              <a href="/category/iot">IoT</a>
+            </li>
+            
+          </ul>
+        </div>
+        <div class="tagfootlinks">
+          <h2 class="footlinktitle">Tags</h2>
+          <a style='font-size: 70%' href='/tag/Alderman's Brow'>Alderman's Brow</a>
+<a style='font-size: 70%' href='/tag/Alderman's Hill'>Alderman's Hill</a>
+<a style='font-size: 126%' href='/tag/Archive'>Archive</a>
+<a style='font-size: 106%' href='/tag/BBC'>BBC</a>
+<a style='font-size: 106%' href='/tag/Bicycle'>Bicycle</a>
+<a style='font-size: 106%' href='/tag/Bike'>Bike</a>
+<a style='font-size: 70%' href='/tag/Cycling'>Cycling</a>
+<a style='font-size: 70%' href='/tag/Dovestone Edge'>Dovestone Edge</a>
+<a style='font-size: 106%' href='/tag/Eglin Lane'>Eglin Lane</a>
+<a style='font-size: 70%' href='/tag/Frozen'>Frozen</a>
+<a style='font-size: 126%' href='/tag/Galloway'>Galloway</a>
+<a style='font-size: 126%' href='/tag/Galloway Forest Park'>Galloway Forest Park</a>
+<a style='font-size: 70%' href='/tag/Hills'>Hills</a>
+<a style='font-size: 70%' href='/tag/Holcombe Moor'>Holcombe Moor</a>
+<a style='font-size: 106%' href='/tag/Hooden's Hill'>Hooden's Hill</a>
+<a style='font-size: 70%' href='/tag/Lake'>Lake</a>
+<a style='font-size: 70%' href='/tag/Memorial'>Memorial</a>
+<a style='font-size: 70%' href='/tag/Peak District'>Peak District</a>
+<a style='font-size: 170%' href='/tag/Photography'>Photography</a>
+<a style='font-size: 126%' href='/tag/Programming'>Programming</a>
+<a style='font-size: 70%' href='/tag/Ramsbottom'>Ramsbottom</a>
+<a style='font-size: 106%' href='/tag/Reservoir'>Reservoir</a>
+<a style='font-size: 126%' href='/tag/Rewind'>Rewind</a>
+<a style='font-size: 106%' href='/tag/Roman Numerals'>Roman Numerals</a>
+<a style='font-size: 70%' href='/tag/Saddleworth Moor'>Saddleworth Moor</a>
+<a style='font-size: 141%' href='/tag/Scotland'>Scotland</a>
+<a style='font-size: 70%' href='/tag/Scout Moor'>Scout Moor</a>
+<a style='font-size: 70%' href='/tag/Sheep'>Sheep</a>
+<a style='font-size: 126%' href='/tag/Snow'>Snow</a>
+<a style='font-size: 106%' href='/tag/StarStaX'>StarStaX</a>
+<a style='font-size: 106%' href='/tag/TDD'>TDD</a>
+<a style='font-size: 106%' href='/tag/Tent'>Tent</a>
+<a style='font-size: 106%' href='/tag/The Dungeon Hills'>The Dungeon Hills</a>
+<a style='font-size: 126%' href='/tag/Travel'>Travel</a>
+<a style='font-size: 106%' href='/tag/Unit Tests'>Unit Tests</a>
+<a style='font-size: 106%' href='/tag/Walking'>Walking</a>
+<a style='font-size: 106%' href='/tag/Wild Camping'>Wild Camping</a>
+<a style='font-size: 126%' href='/tag/Winter'>Winter</a>
+<a style='font-size: 70%' href='/tag/Wirral Way'>Wirral Way</a>
+<a style='font-size: 126%' href='/tag/camping'>camping</a>
+<a style='font-size: 70%' href='/tag/glentress'>glentress</a>
+<a style='font-size: 106%' href='/tag/long exposure'>long exposure</a>
+<a style='font-size: 126%' href='/tag/stars'>stars</a>
+<a style='font-size: 106%' href='/tag/startrails'>startrails</a>
+
+        </div>
+      </div>
+      <div class="footercopy">Copyright &copy; Ross Harper</div>
+    </footer>
+</body>
+</html>
