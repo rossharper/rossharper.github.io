@@ -4,21 +4,21 @@
     <meta charset="utf-8">
     <title> |
       rossharper.net</title>
-    <link rel="stylesheet" href="https://rossharper.net/css/style.css">
+    <link rel="stylesheet" href="http://rossharper.net/css/style.css">
     <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   </head>
   <body>
 
     <header id="bannerheader">
     <div id="bannerheading">
-        <a href="https://rossharper.net">rossharper.net</a>
+        <a href="http://rossharper.net">rossharper.net</a>
     </div>
 </header>
     <nav>
     <div id="navitems">
         <ul>
-            <li><a href="https://rossharper.net/">Home</a></li>
-            <li><a href="https://rossharper.net/about">About</a></li>
+            <li><a href="http://rossharper.net/">Home</a></li>
+            <li><a href="http://rossharper.net/about">About</a></li>
         </ul>
     </div>
 </nav>
@@ -50,7 +50,7 @@
 
 <h3 id="sniffing-the-signals">Sniffing the Signals</h3>
 
-<p><a href="https://rossharper.net/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg"><img src="https://rossharper.net/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg" alt="433MHz transmitter and receiver" title="433MHz transmitter and receiver" class="aligncenter wp-image-551" width="600" height="600" /></a></p>
+<p><a href="http://rossharper.net/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg"><img src="http://rossharper.net/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg" alt="433MHz transmitter and receiver" title="433MHz transmitter and receiver" class="aligncenter wp-image-551" width="600" height="600" /></a></p>
 
 <p>Once I had my 433MHz transmitter and receiver, I wired them up using a prototyping breadboard to my Raspberry Pi in a vain attempt to simply read the signals straight out of the air. The plan was to listen to the signal on the receiver’s data port whilst operating the thermostat to trigger its signals. No luck. The software I was using on the Raspberry Pi did not produce any results. Presumably the encoding used by my thermostat is non-standard. (I don’t remember the software off the top of my head. RC Switch, perhaps?)</p>
 
@@ -67,7 +67,7 @@
 
 <p>I didn’t go to the extent that Steven Hale did, I just wired up one channel, and didn’t bother with shrink wrap to make it look professional. This is probably a one-off tool for me.</p>
 
-<p><a href="https://rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-29-42-e1448313674238.jpg"><img src="https://rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-29-42-e1448313674238.jpg" alt="Ghetto Logic Analyser" title="Ghetto Logic Analyser" class="aligncenter wp-image-539" width="450" height="600" /></a></p>
+<p><a href="http://rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-29-42-e1448313674238.jpg"><img src="http://rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-29-42-e1448313674238.jpg" alt="Ghetto Logic Analyser" title="Ghetto Logic Analyser" class="aligncenter wp-image-539" width="450" height="600" /></a></p>
 
 <p>Then:</p>
 
@@ -81,7 +81,7 @@
 
 <p>Once I’d recorded some signals, I found them amongst the noise, and zoomed in to see them. But something was wrong…</p>
 
-<p><a href="https://rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-30-28.png"><img src="https://rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-30-28.png" alt="First signal" title="First signal" class="aligncenter wp-image-542" width="600" height="375" /></a></p>
+<p><a href="http://rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-30-28.png"><img src="http://rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-30-28.png" alt="First signal" title="First signal" class="aligncenter wp-image-542" width="600" height="375" /></a></p>
 
 <p>This wasn’t the clear, decipherable, square-wave I was expecting.</p>
 
@@ -89,7 +89,7 @@
 
 <p>I modified the analyser to add a second 18k resistor on the unused lead. This time in series, rather than across the data and ground leads.</p>
 
-<p><a href="https://rossharper.net/img/wp-imports/2015/11/Photo-23-11-2015-21-11-04-e1448313787989.jpg"><img src="https://rossharper.net/img/wp-imports/2015/11/Photo-23-11-2015-21-11-04-e1448313787989.jpg" alt="Ghetto Logic Analyser V2" title="Ghetto Logic Analyser V2" class="aligncenter wp-image-543" width="600" height="450" /></a></p>
+<p><a href="http://rossharper.net/img/wp-imports/2015/11/Photo-23-11-2015-21-11-04-e1448313787989.jpg"><img src="http://rossharper.net/img/wp-imports/2015/11/Photo-23-11-2015-21-11-04-e1448313787989.jpg" alt="Ghetto Logic Analyser V2" title="Ghetto Logic Analyser V2" class="aligncenter wp-image-543" width="600" height="450" /></a></p>
 
 <p><em>(<strong>NOTE</strong>: I was probably taking a bit of a risk here, that my soundcard might have been damaged by the higher voltages. But I figured “it’s 5V from a Raspberry Pi — what’s the worst that can happen?”. If you are following me, <strong>proceed with caution</strong> — I am no electronics engineer!)</em></p>
 
@@ -97,14 +97,14 @@
 
 <p>Here is the boiler ON signal when the noise either side is removed:</p>
 
-<p><a href="https://rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.16.08.png"><img src="https://rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.16.08.png" alt="Tranmission received" title="Tranmission received" class="aligncenter wp-image-544" width="600" height="368" /></a></p>
+<p><a href="http://rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.16.08.png"><img src="http://rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.16.08.png" alt="Tranmission received" title="Tranmission received" class="aligncenter wp-image-544" width="600" height="368" /></a></p>
 
 <!-- markdownlint-disable MD036 -->
 <p><em>(I later flipped HIGH/LOW back in my program, I just found the signal easier to read this way round)</em></p>
 
 <p>There appear to be a number of packets. Zooming in to an individual packet, we can see the individual HIGH/LOW signals.</p>
 
-<p><a href="https://rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.26.04.png"><img src="https://rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.26.04.png" alt="Zoomed in view of a packet" title="Zoomed in view of a packet" class="aligncenter wp-image-546" width="600" height="368" /></a></p>
+<p><a href="http://rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.26.04.png"><img src="http://rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.26.04.png" alt="Zoomed in view of a packet" title="Zoomed in view of a packet" class="aligncenter wp-image-546" width="600" height="368" /></a></p>
 
 <p>The signal is pulled LOW for a period before the packet begins. There are also two different lengths of pulse: one must represent a binary ‘1’ and the other a ‘0’. I <em>guessed</em> that a long pulse would be a ‘1’ and the short pulse a ‘0’. Then I got to work reading all the individual 1s and 0s in the packets. I discovered that the packets were repeating and that for the ON signal there were just two packets:</p>
 
@@ -195,13 +195,13 @@
 
     <footer>
     <div class="postfooterfeaturebox">
-        <span class="postfootertitle">Categories:</span>&nbsp;<a href="https://rossharper.net/categories/heating-project">Heating Project</a>, <a href="https://rossharper.net/categories/iot">IoT</a>, <a href="https://rossharper.net/categories/technology">Technology</a>
+        <span class="postfootertitle">Categories:</span>&nbsp;<a href="http://rossharper.net/categories/heating-project">Heating Project</a>, <a href="http://rossharper.net/categories/iot">IoT</a>, <a href="http://rossharper.net/categories/technology">Technology</a>
         <br />
-        <span class="postfootertitle">Tags:</span>&nbsp;<a href="https://rossharper.net/tags/433mhz">433MHz</a>, <a href="https://rossharper.net/tags/audacity">audacity</a>, <a href="https://rossharper.net/tags/boiler">boiler</a>, <a href="https://rossharper.net/tags/control">control</a>, <a href="https://rossharper.net/tags/electronics">electronics</a>, <a href="https://rossharper.net/tags/heating">heating</a>, <a href="https://rossharper.net/tags/internet-of-things">Internet of Things</a>, <a href="https://rossharper.net/tags/iot">IoT</a>, <a href="https://rossharper.net/tags/project">project</a>, <a href="https://rossharper.net/tags/radio">radio</a>, <a href="https://rossharper.net/tags/raspberry-pi">raspberry pi</a>, <a href="https://rossharper.net/tags/rcr10-433">RCR10/433</a>, <a href="https://rossharper.net/tags/siemens">siemens</a>, <a href="https://rossharper.net/tags/thermostat">thermostat</a>
+        <span class="postfootertitle">Tags:</span>&nbsp;<a href="http://rossharper.net/tags/433mhz">433MHz</a>, <a href="http://rossharper.net/tags/audacity">audacity</a>, <a href="http://rossharper.net/tags/boiler">boiler</a>, <a href="http://rossharper.net/tags/control">control</a>, <a href="http://rossharper.net/tags/electronics">electronics</a>, <a href="http://rossharper.net/tags/heating">heating</a>, <a href="http://rossharper.net/tags/internet-of-things">Internet of Things</a>, <a href="http://rossharper.net/tags/iot">IoT</a>, <a href="http://rossharper.net/tags/project">project</a>, <a href="http://rossharper.net/tags/radio">radio</a>, <a href="http://rossharper.net/tags/raspberry-pi">raspberry pi</a>, <a href="http://rossharper.net/tags/rcr10-433">RCR10/433</a>, <a href="http://rossharper.net/tags/siemens">siemens</a>, <a href="http://rossharper.net/tags/thermostat">thermostat</a>
     </div>
     <div class="paginationlinks clearfix">
-        <a href="https://rossharper.net/2014/05/glentress-mountain-biking/" class="paginationprev">&larr; Previous post: Glentress – Mountain Biking</a>
-        <a href="https://rossharper.net/2016/02/parameterized-junit4-unit-tests-in-kotlin/" class="paginationnext">Next post: Parameterized JUnit4 Unit Tests in Kotlin &rarr;</a>
+        <a href="http://rossharper.net/2014/05/glentress-mountain-biking/" class="paginationprev">&larr; Previous post: Glentress – Mountain Biking</a>
+        <a href="http://rossharper.net/2016/02/parameterized-junit4-unit-tests-in-kotlin/" class="paginationnext">Next post: Parameterized JUnit4 Unit Tests in Kotlin &rarr;</a>
     </div>
 </footer>
   </article>
@@ -214,105 +214,105 @@
           <ul>
             
             <li>
-              <a href="https://rossharper.net/category/photography">Photography</a>
+              <a href="http://rossharper.net/category/photography">Photography</a>
             </li>
             
             <li>
-              <a href="https://rossharper.net/category/travel">Travel</a>
+              <a href="http://rossharper.net/category/travel">Travel</a>
             </li>
             
             <li>
-              <a href="https://rossharper.net/category/wild-camping">Wild Camping</a>
+              <a href="http://rossharper.net/category/wild-camping">Wild Camping</a>
             </li>
             
             <li>
-              <a href="https://rossharper.net/category/rewind-from-the-archive">Rewind: From The Archive</a>
+              <a href="http://rossharper.net/category/rewind-from-the-archive">Rewind: From The Archive</a>
             </li>
             
             <li>
-              <a href="https://rossharper.net/category/general">General</a>
+              <a href="http://rossharper.net/category/general">General</a>
             </li>
             
             <li>
-              <a href="https://rossharper.net/category/programming">Programming</a>
+              <a href="http://rossharper.net/category/programming">Programming</a>
             </li>
             
             <li>
-              <a href="https://rossharper.net/category/technology">Technology</a>
+              <a href="http://rossharper.net/category/technology">Technology</a>
             </li>
             
             <li>
-              <a href="https://rossharper.net/category/web">Web</a>
+              <a href="http://rossharper.net/category/web">Web</a>
             </li>
             
             <li>
-              <a href="https://rossharper.net/category/wordpress">Wordpress</a>
+              <a href="http://rossharper.net/category/wordpress">Wordpress</a>
             </li>
             
             <li>
-              <a href="https://rossharper.net/category/cycling">Cycling</a>
+              <a href="http://rossharper.net/category/cycling">Cycling</a>
             </li>
             
             <li>
-              <a href="https://rossharper.net/category/mountain-biking">Mountain Biking</a>
+              <a href="http://rossharper.net/category/mountain-biking">Mountain Biking</a>
             </li>
             
             <li>
-              <a href="https://rossharper.net/category/heating-project">Heating Project</a>
+              <a href="http://rossharper.net/category/heating-project">Heating Project</a>
             </li>
             
             <li>
-              <a href="https://rossharper.net/category/iot">IoT</a>
+              <a href="http://rossharper.net/category/iot">IoT</a>
             </li>
             
           </ul>
         </div>
         <div class="tagfootlinks">
           <h2 class="footlinktitle">Tags</h2>
-          <a style='font-size: 70%' href='https://rossharper.net/tag/alderman-s-brow'>Alderman's Brow</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/alderman-s-hill'>Alderman's Hill</a>
-<a style='font-size: 126%' href='https://rossharper.net/tag/archive'>Archive</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/bbc'>BBC</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/bicycle'>Bicycle</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/bike'>Bike</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/cycling'>Cycling</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/dovestone-edge'>Dovestone Edge</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/eglin-lane'>Eglin Lane</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/frozen'>Frozen</a>
-<a style='font-size: 126%' href='https://rossharper.net/tag/galloway'>Galloway</a>
-<a style='font-size: 126%' href='https://rossharper.net/tag/galloway-forest-park'>Galloway Forest Park</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/hills'>Hills</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/holcombe-moor'>Holcombe Moor</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/hooden-s-hill'>Hooden's Hill</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/lake'>Lake</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/memorial'>Memorial</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/peak-district'>Peak District</a>
-<a style='font-size: 170%' href='https://rossharper.net/tag/photography'>Photography</a>
-<a style='font-size: 126%' href='https://rossharper.net/tag/programming'>Programming</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/ramsbottom'>Ramsbottom</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/reservoir'>Reservoir</a>
-<a style='font-size: 126%' href='https://rossharper.net/tag/rewind'>Rewind</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/roman-numerals'>Roman Numerals</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/saddleworth-moor'>Saddleworth Moor</a>
-<a style='font-size: 141%' href='https://rossharper.net/tag/scotland'>Scotland</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/scout-moor'>Scout Moor</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/sheep'>Sheep</a>
-<a style='font-size: 126%' href='https://rossharper.net/tag/snow'>Snow</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/starstax'>StarStaX</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/tdd'>TDD</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/tent'>Tent</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/the-dungeon-hills'>The Dungeon Hills</a>
-<a style='font-size: 126%' href='https://rossharper.net/tag/travel'>Travel</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/unit-tests'>Unit Tests</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/walking'>Walking</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/wild-camping'>Wild Camping</a>
-<a style='font-size: 126%' href='https://rossharper.net/tag/winter'>Winter</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/wirral-way'>Wirral Way</a>
-<a style='font-size: 126%' href='https://rossharper.net/tag/camping'>camping</a>
-<a style='font-size: 70%' href='https://rossharper.net/tag/glentress'>glentress</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/long-exposure'>long exposure</a>
-<a style='font-size: 126%' href='https://rossharper.net/tag/stars'>stars</a>
-<a style='font-size: 106%' href='https://rossharper.net/tag/startrails'>startrails</a>
+          <a style='font-size: 70%' href='http://rossharper.net/tag/alderman-s-brow'>Alderman's Brow</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/alderman-s-hill'>Alderman's Hill</a>
+<a style='font-size: 126%' href='http://rossharper.net/tag/archive'>Archive</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/bbc'>BBC</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/bicycle'>Bicycle</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/bike'>Bike</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/cycling'>Cycling</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/dovestone-edge'>Dovestone Edge</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/eglin-lane'>Eglin Lane</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/frozen'>Frozen</a>
+<a style='font-size: 126%' href='http://rossharper.net/tag/galloway'>Galloway</a>
+<a style='font-size: 126%' href='http://rossharper.net/tag/galloway-forest-park'>Galloway Forest Park</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/hills'>Hills</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/holcombe-moor'>Holcombe Moor</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/hooden-s-hill'>Hooden's Hill</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/lake'>Lake</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/memorial'>Memorial</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/peak-district'>Peak District</a>
+<a style='font-size: 170%' href='http://rossharper.net/tag/photography'>Photography</a>
+<a style='font-size: 126%' href='http://rossharper.net/tag/programming'>Programming</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/ramsbottom'>Ramsbottom</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/reservoir'>Reservoir</a>
+<a style='font-size: 126%' href='http://rossharper.net/tag/rewind'>Rewind</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/roman-numerals'>Roman Numerals</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/saddleworth-moor'>Saddleworth Moor</a>
+<a style='font-size: 141%' href='http://rossharper.net/tag/scotland'>Scotland</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/scout-moor'>Scout Moor</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/sheep'>Sheep</a>
+<a style='font-size: 126%' href='http://rossharper.net/tag/snow'>Snow</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/starstax'>StarStaX</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/tdd'>TDD</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/tent'>Tent</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/the-dungeon-hills'>The Dungeon Hills</a>
+<a style='font-size: 126%' href='http://rossharper.net/tag/travel'>Travel</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/unit-tests'>Unit Tests</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/walking'>Walking</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/wild-camping'>Wild Camping</a>
+<a style='font-size: 126%' href='http://rossharper.net/tag/winter'>Winter</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/wirral-way'>Wirral Way</a>
+<a style='font-size: 126%' href='http://rossharper.net/tag/camping'>camping</a>
+<a style='font-size: 70%' href='http://rossharper.net/tag/glentress'>glentress</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/long-exposure'>long exposure</a>
+<a style='font-size: 126%' href='http://rossharper.net/tag/stars'>stars</a>
+<a style='font-size: 106%' href='http://rossharper.net/tag/startrails'>startrails</a>
 
         </div>
       </div>
