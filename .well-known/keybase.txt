@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/rossharper
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://rossharper.net
+  * I am rossharper (https://keybase.io/rossharper) on keybase.
+  * I have a public key ASB7SOI_OLbTEDcIZ2gsKHfa0FSXCj9eMt5SHtCN_tBxiwo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120a08c629be5bcaace99cd06be3ce6688f8a74f69a40ba14dd0450891852e77af00a",
+      "host": "keybase.io",
+      "kid": "01207b48e23f38b6d310370867682c2877dad054970a3f5e32de521ed08dfed0718b0a",
+      "uid": "1f3d6a6ce8a341c963014191d6ad9919",
+      "username": "rossharper"
+    },
+    "merkle_root": {
+      "ctime": 1529673321,
+      "hash": "e62138c1553b483f480d40856de533fd113010ed2ff304a60cb8450661936adf2f5df20279158109852aa44d911d8acc5eca1144188e53fafae7aff348d86c73",
+      "hash_meta": "6a2c0022fbc6593e2f67bee3c2213d173d9bf8d4b6bc6873001cddf140fa1042",
+      "seqno": 3126228
+    },
+    "service": {
+      "entropy": "0s+nW1XwZJTGY+95F3qs55R0",
+      "hostname": "rossharper.net",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "2.1.1"
+  },
+  "ctime": 1529673334,
+  "expire_in": 504576000,
+  "prev": "a1968e5dab040b0aadc8b11344d79bce19584921dbaa15570541ba1978f45542",
+  "seqno": 14,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEge0jiPzi20xA3CGdoLCh32tBUlwo/XjLeUh7Qjf7QcYsKp3BheWxvYWTESpcCDsQgoZaOXasECwqtyLETRNebzhlYSSHbqhVXBUG6GXj0VULEIEU5tCLYl9Oxiz7AuuM//0N7JxatTvQTYENaNpJF+AEEAgHCo3NpZ8RAsEH/X2WPRCYEUPG3Mvo2+pI8NaWhlDT8laAg3kDB2pLq/muSR00vYLfoRbLzdao2nTI2XXunWOHCzpvJ0/xPCahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIE2aQNkwyZxUO6LD4MeD/IdJQe1SbL6uv1fKifFynzXpo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/rossharper
+
+==================================================================
