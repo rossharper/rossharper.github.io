@@ -3,146 +3,145 @@
   <head>
     <meta charset="utf-8">
     <title>Decoding a Siemens RCR10/433 Thermostat Signal to Control a Boiler from a Raspberry Pi | rossharper.net</title>
-  </title>
-  <link rel="stylesheet" href="https://www.rossharper.net/css/style.css">
-  <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Decoding a Siemens RCR10/433 Thermostat Signal to Control a Boiler from a Raspberry Pi" />
-  <meta property="og:description" content="With the goal of building a home heating control system with a Raspberry Pi and a 433MHz tranmitter, I had to reverse engineer the signals from my existing radio controlled boiler thermostat..." />
-  <meta property="article:published_time" content="2015-11-23 22:30:46 +0000" />
-  <meta property="og:image" content="https://www.rossharper.net/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg" />
-  <meta property="og:url" content="https://www.rossharper.net/2015/11/decoding-a-siemens-rcr10433-thermostat-signal-to-control-a-boiler-from-a-raspberry-pi/" />
-  <meta property="og:site_name" content="rossharper.net" />
-  <meta property="og:locale" content="en_GB" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:text:title" content="Decoding a Siemens RCR10/433 Thermostat Signal to Control a Boiler from a Raspberry Pi" />
-  <meta name="twitter:description" content="With the goal of building a home heating control system with a Raspberry Pi and a 433MHz tranmitter, I had to reverse engineer the signals from my existing radio controlled boiler thermostat..." />
-  <meta name="twitter:url" content="https://www.rossharper.net/2015/11/decoding-a-siemens-rcr10433-thermostat-signal-to-control-a-boiler-from-a-raspberry-pi/" />
-  <meta name="twitter:image" content="https://www.rossharper.net/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg" />
-</head>
-<body>
-  <header id="bannerheader">
-    <div id="bannerheading">
-      <a href="https://www.rossharper.net">rossharper.net</a>
-    </div>
-  </header>
-  <nav>
-    <div id="navitems">
-      <ul>
-        <li><a href="https://www.rossharper.net/">Home</a></li>
-        <li><a href="https://www.rossharper.net/about">About</a></li>
-      </ul>
-    </div>
-  </nav>
-  <main>
-    <article>
-      <header>
-        <h2>Decoding a Siemens RCR10/433 Thermostat Signal to Control a Boiler from a Raspberry Pi</h2>
-        <p class="postdate">Posted on Monday, 23rd November 2015</p>
-      </header>
-      <p><em>This is a <del>quick</del> post in response to a question related to my boiler control Github project: <a href="https://github.com/rossharper/boilercontrol" target="_blank">https://github.com/rossharper/boilercontrol</a> I intend to eventually perform a more comprehensive write-up of this whole project.</em></p>
-      <h3 id="background">Background</h3>
-      <p>I had been looking to start tinkering with my Raspberry Pi and do some home automation for a while. We have a Siemens RCR10/433 wireless thermostat programmer that controls our boiler and I wondered if it would be possible to hack the radio signal and take control of the boiler myself. Thus, I could create my own smart heating system inspired by products such as <a href="https://nest.com/uk/" title="Nest website" target="_blank">Nest</a> and <a href="https://www.hivehome.com" title="Hive website" target="_blank">Hive</a>. This post roughly outlines the process I used to sniff the signals sent between the thermostat and the receiver relay that controls the physical call for heat signal to the boiler. <!--more--></p>
-      <h3 id="research">Research</h3>
-      <p>A quick Google search and I’d found some other people that had tried to do a similar thing with their boilers. First up, Steven Hale, who had a couple of great posts about <a href="http://www.stevenhale.co.uk/main/2013/08/home-automation-reverse-engineering-a-worcester-bosch-dt10rf-wireless-thermostat/" title="Steven Hale's article on reverse engineering a Worcester-Bosch DT10RF wireless thermostat" target="_blank">Reverse Engineering a Worcester-Bosch DT10RF wireless thermostat</a> in which he sniffs his thermostat’s signals and a further post with the detail of how he built a <a href="http://www.stevenhale.co.uk/main/2013/07/making-a-soundcard-logic-analyser/" title="Steven Hale's article on building a Soundcard Logic Analyser" target="_blank">Soundcard Logic Analyser</a> to do the sniffing. Secondly, I found a similar post (<a href="https://damn.technology/controlling-british-gas-wr1-receiver-arduino" target="_blank">https://damn.technology/controlling-british-gas-wr1-receiver-arduino</a>) detailing the same method of sniffing the thermostat’s radio signal. I identified that my thermostat uses the same radio frequency as those in the above posts: 433MHz (the clue is in the product name!). Perfect, I had something to go on. 433MHz transmitter and receiver ordered….  </p>
-      <h3 id="sniffing-the-signals">Sniffing the Signals</h3>
-      <p><a href="https://www.rossharper.net/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg"><img src="https://www.rossharper.net/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg" alt="433MHz transmitter and receiver" title="433MHz transmitter and receiver" class="aligncenter wp-image-551" width="600" height="600" /></a></p>
-      <p>Once I had my 433MHz transmitter and receiver, I wired them up using a prototyping breadboard to my Raspberry Pi in a vain attempt to simply read the signals straight out of the air. The plan was to listen to the signal on the receiver’s data port whilst operating the thermostat to trigger its signals. No luck. The software I was using on the Raspberry Pi did not produce any results. Presumably the encoding used by my thermostat is non-standard. (I don’t remember the software off the top of my head. RC Switch, perhaps?)</p>
-      <p>So, the easy approach didn’t work — it was time to follow the posts mentioned above and build the ghetto-style logic analyser.</p>
-      <p>For this, I needed to buy the following:</p>
-      <ul>
-        <li>a length of shielded stereo cable (I tried with some old earphone cable at first but it was too thin)</li>
-        <li>a 3.5mm stereo jack</li>
-        <li>some 18k resistors</li>
-        <li>some 82k resistors (I already had some wires, solder, and a soldering iron).</li>
-      </ul>
-      <p>I didn’t go to the extent that Steven Hale did, I just wired up one channel, and didn’t bother with shrink wrap to make it look professional. This is probably a one-off tool for me.</p>
-      <p><a href="https://www.rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-29-42-e1448313674238.jpg"><img src="https://www.rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-29-42-e1448313674238.jpg" alt="Ghetto Logic Analyser" title="Ghetto Logic Analyser" class="aligncenter wp-image-539" width="450" height="600" /></a></p>
-      <p>Then:</p>
-      <ul>
-        <li>Arranged the receiver on the breadboard, powered by Raspberry Pi power via its header pins</li>
-        <li>Connected the logic analyser probes to the GND and DATA pins of the receiver via the breadboard</li>
-        <li>Plugged the stereo jack into my Mac’s line-in/mic port</li>
-        <li>Fired up Audacity and hit record</li>
-        <li>Operated the thermostat to cause it to send signals</li>
-      </ul>
-      <p>Once I’d recorded some signals, I found them amongst the noise, and zoomed in to see them. But something was wrong…</p>
-      <p><a href="https://www.rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-30-28.png"><img src="https://www.rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-30-28.png" alt="First signal" title="First signal" class="aligncenter wp-image-542" width="600" height="375" /></a></p>
-      <p>This wasn’t the clear, decipherable, square-wave I was expecting.</p>
-      <p>When I looked at the levels, it was clear that I was only getting a very faint signal. I guessed it must be something to do with the line level on the Mac, and that the resistance of my analyser was pulling the signal too low. So I experimented…</p>
-      <p>I modified the analyser to add a second 18k resistor on the unused lead. This time in series, rather than across the data and ground leads.</p>
-      <p><a href="https://www.rossharper.net/img/wp-imports/2015/11/Photo-23-11-2015-21-11-04-e1448313787989.jpg"><img src="https://www.rossharper.net/img/wp-imports/2015/11/Photo-23-11-2015-21-11-04-e1448313787989.jpg" alt="Ghetto Logic Analyser V2" title="Ghetto Logic Analyser V2" class="aligncenter wp-image-543" width="600" height="450" /></a></p>
-      <p><em>(<strong>NOTE</strong>: I was probably taking a bit of a risk here, that my soundcard might have been damaged by the higher voltages. But I figured “it’s 5V from a Raspberry Pi — what’s the worst that can happen?”. If you are following me, <strong>proceed with caution</strong> — I am no electronics engineer!)</em></p>
-      <p>Bingo. I had a signal. It appeared to be upside-down, so I flipped it in Audacity.</p>
-      <p>Here is the boiler ON signal when the noise either side is removed:</p>
-      <p><a href="https://www.rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.16.08.png"><img src="https://www.rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.16.08.png" alt="Tranmission received" title="Tranmission received" class="aligncenter wp-image-544" width="600" height="368" /></a></p>
-      <!-- markdownlint-disable MD036 -->
-      <p><em>(I later flipped HIGH/LOW back in my program, I just found the signal easier to read this way round)</em></p>
-      <p>There appear to be a number of packets. Zooming in to an individual packet, we can see the individual HIGH/LOW signals.</p>
-      <p><a href="https://www.rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.26.04.png"><img src="https://www.rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.26.04.png" alt="Zoomed in view of a packet" title="Zoomed in view of a packet" class="aligncenter wp-image-546" width="600" height="368" /></a></p>
-      <p>The signal is pulled LOW for a period before the packet begins. There are also two different lengths of pulse: one must represent a binary ‘1’ and the other a ‘0’. I <em>guessed</em> that a long pulse would be a ‘1’ and the short pulse a ‘0’. Then I got to work reading all the individual 1s and 0s in the packets. I discovered that the packets were repeating and that for the ON signal there were just two packets:</p>
-      <pre><code class="language-none">    100001000101111010000000100000001
+    <link rel="stylesheet" href="https://www.rossharper.net/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Decoding a Siemens RCR10/433 Thermostat Signal to Control a Boiler from a Raspberry Pi" />
+    <meta property="og:description" content="With the goal of building a home heating control system with a Raspberry Pi and a 433MHz tranmitter, I had to reverse engineer the signals from my existing radio controlled boiler thermostat..." />
+    <meta property="article:published_time" content="2015-11-23 22:30:46 +0000" />
+    <meta property="og:image" content="https://www.rossharper.net/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg" />
+    <meta property="og:url" content="https://www.rossharper.net/2015/11/decoding-a-siemens-rcr10433-thermostat-signal-to-control-a-boiler-from-a-raspberry-pi/" />
+    <meta property="og:site_name" content="rossharper.net" />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:text:title" content="Decoding a Siemens RCR10/433 Thermostat Signal to Control a Boiler from a Raspberry Pi" />
+    <meta name="twitter:description" content="With the goal of building a home heating control system with a Raspberry Pi and a 433MHz tranmitter, I had to reverse engineer the signals from my existing radio controlled boiler thermostat..." />
+    <meta name="twitter:url" content="https://www.rossharper.net/2015/11/decoding-a-siemens-rcr10433-thermostat-signal-to-control-a-boiler-from-a-raspberry-pi/" />
+    <meta name="twitter:image" content="https://www.rossharper.net/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg" />
+  </head>
+  <body>
+    <header id="bannerheader">
+      <div id="bannerheading">
+        <a href="https://www.rossharper.net">rossharper.net</a>
+      </div>
+    </header>
+    <nav>
+      <div id="navitems">
+        <ul>
+          <li><a href="https://www.rossharper.net/">Home</a></li>
+          <li><a href="https://www.rossharper.net/about">About</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <article>
+        <header>
+          <h2>Decoding a Siemens RCR10/433 Thermostat Signal to Control a Boiler from a Raspberry Pi</h2>
+          <p class="postdate">Posted on Monday, 23rd November 2015</p>
+        </header>
+        <p><em>This is a <del>quick</del> post in response to a question related to my boiler control Github project: <a href="https://github.com/rossharper/boilercontrol" target="_blank">https://github.com/rossharper/boilercontrol</a> I intend to eventually perform a more comprehensive write-up of this whole project.</em></p>
+        <h3 id="background">Background</h3>
+        <p>I had been looking to start tinkering with my Raspberry Pi and do some home automation for a while. We have a Siemens RCR10/433 wireless thermostat programmer that controls our boiler and I wondered if it would be possible to hack the radio signal and take control of the boiler myself. Thus, I could create my own smart heating system inspired by products such as <a href="https://nest.com/uk/" title="Nest website" target="_blank">Nest</a> and <a href="https://www.hivehome.com" title="Hive website" target="_blank">Hive</a>. This post roughly outlines the process I used to sniff the signals sent between the thermostat and the receiver relay that controls the physical call for heat signal to the boiler. <!--more--></p>
+        <h3 id="research">Research</h3>
+        <p>A quick Google search and I’d found some other people that had tried to do a similar thing with their boilers. First up, Steven Hale, who had a couple of great posts about <a href="http://www.stevenhale.co.uk/main/2013/08/home-automation-reverse-engineering-a-worcester-bosch-dt10rf-wireless-thermostat/" title="Steven Hale's article on reverse engineering a Worcester-Bosch DT10RF wireless thermostat" target="_blank">Reverse Engineering a Worcester-Bosch DT10RF wireless thermostat</a> in which he sniffs his thermostat’s signals and a further post with the detail of how he built a <a href="http://www.stevenhale.co.uk/main/2013/07/making-a-soundcard-logic-analyser/" title="Steven Hale's article on building a Soundcard Logic Analyser" target="_blank">Soundcard Logic Analyser</a> to do the sniffing. Secondly, I found a similar post (<a href="https://damn.technology/controlling-british-gas-wr1-receiver-arduino" target="_blank">https://damn.technology/controlling-british-gas-wr1-receiver-arduino</a>) detailing the same method of sniffing the thermostat’s radio signal. I identified that my thermostat uses the same radio frequency as those in the above posts: 433MHz (the clue is in the product name!). Perfect, I had something to go on. 433MHz transmitter and receiver ordered….  </p>
+        <h3 id="sniffing-the-signals">Sniffing the Signals</h3>
+        <p><a href="https://www.rossharper.net/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg"><img src="https://www.rossharper.net/img/wp-imports/2015/11/Photo-30-03-2015-17-14-14.jpg" alt="433MHz transmitter and receiver" title="433MHz transmitter and receiver" class="aligncenter wp-image-551" width="600" height="600" /></a></p>
+        <p>Once I had my 433MHz transmitter and receiver, I wired them up using a prototyping breadboard to my Raspberry Pi in a vain attempt to simply read the signals straight out of the air. The plan was to listen to the signal on the receiver’s data port whilst operating the thermostat to trigger its signals. No luck. The software I was using on the Raspberry Pi did not produce any results. Presumably the encoding used by my thermostat is non-standard. (I don’t remember the software off the top of my head. RC Switch, perhaps?)</p>
+        <p>So, the easy approach didn’t work — it was time to follow the posts mentioned above and build the ghetto-style logic analyser.</p>
+        <p>For this, I needed to buy the following:</p>
+        <ul>
+          <li>a length of shielded stereo cable (I tried with some old earphone cable at first but it was too thin)</li>
+          <li>a 3.5mm stereo jack</li>
+          <li>some 18k resistors</li>
+          <li>some 82k resistors (I already had some wires, solder, and a soldering iron).</li>
+        </ul>
+        <p>I didn’t go to the extent that Steven Hale did, I just wired up one channel, and didn’t bother with shrink wrap to make it look professional. This is probably a one-off tool for me.</p>
+        <p><a href="https://www.rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-29-42-e1448313674238.jpg"><img src="https://www.rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-29-42-e1448313674238.jpg" alt="Ghetto Logic Analyser" title="Ghetto Logic Analyser" class="aligncenter wp-image-539" width="450" height="600" /></a></p>
+        <p>Then:</p>
+        <ul>
+          <li>Arranged the receiver on the breadboard, powered by Raspberry Pi power via its header pins</li>
+          <li>Connected the logic analyser probes to the GND and DATA pins of the receiver via the breadboard</li>
+          <li>Plugged the stereo jack into my Mac’s line-in/mic port</li>
+          <li>Fired up Audacity and hit record</li>
+          <li>Operated the thermostat to cause it to send signals</li>
+        </ul>
+        <p>Once I’d recorded some signals, I found them amongst the noise, and zoomed in to see them. But something was wrong…</p>
+        <p><a href="https://www.rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-30-28.png"><img src="https://www.rossharper.net/img/wp-imports/2015/11/Photo-02-04-2015-19-30-28.png" alt="First signal" title="First signal" class="aligncenter wp-image-542" width="600" height="375" /></a></p>
+        <p>This wasn’t the clear, decipherable, square-wave I was expecting.</p>
+        <p>When I looked at the levels, it was clear that I was only getting a very faint signal. I guessed it must be something to do with the line level on the Mac, and that the resistance of my analyser was pulling the signal too low. So I experimented…</p>
+        <p>I modified the analyser to add a second 18k resistor on the unused lead. This time in series, rather than across the data and ground leads.</p>
+        <p><a href="https://www.rossharper.net/img/wp-imports/2015/11/Photo-23-11-2015-21-11-04-e1448313787989.jpg"><img src="https://www.rossharper.net/img/wp-imports/2015/11/Photo-23-11-2015-21-11-04-e1448313787989.jpg" alt="Ghetto Logic Analyser V2" title="Ghetto Logic Analyser V2" class="aligncenter wp-image-543" width="600" height="450" /></a></p>
+        <p><em>(<strong>NOTE</strong>: I was probably taking a bit of a risk here, that my soundcard might have been damaged by the higher voltages. But I figured “it’s 5V from a Raspberry Pi — what’s the worst that can happen?”. If you are following me, <strong>proceed with caution</strong> — I am no electronics engineer!)</em></p>
+        <p>Bingo. I had a signal. It appeared to be upside-down, so I flipped it in Audacity.</p>
+        <p>Here is the boiler ON signal when the noise either side is removed:</p>
+        <p><a href="https://www.rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.16.08.png"><img src="https://www.rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.16.08.png" alt="Tranmission received" title="Tranmission received" class="aligncenter wp-image-544" width="600" height="368" /></a></p>
+        <!-- markdownlint-disable MD036 -->
+        <p><em>(I later flipped HIGH/LOW back in my program, I just found the signal easier to read this way round)</em></p>
+        <p>There appear to be a number of packets. Zooming in to an individual packet, we can see the individual HIGH/LOW signals.</p>
+        <p><a href="https://www.rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.26.04.png"><img src="https://www.rossharper.net/img/wp-imports/2015/11/Screen-Shot-2015-11-23-at-21.26.04.png" alt="Zoomed in view of a packet" title="Zoomed in view of a packet" class="aligncenter wp-image-546" width="600" height="368" /></a></p>
+        <p>The signal is pulled LOW for a period before the packet begins. There are also two different lengths of pulse: one must represent a binary ‘1’ and the other a ‘0’. I <em>guessed</em> that a long pulse would be a ‘1’ and the short pulse a ‘0’. Then I got to work reading all the individual 1s and 0s in the packets. I discovered that the packets were repeating and that for the ON signal there were just two packets:</p>
+        <pre><code class="language-none">    100001000101111010000000100000001
     111110111010000101111111011111110
 </code></pre>
-      <p>It seems that:</p>
-      <ul>
-        <li>there are 33 bits per packet</li>
-        <li>the first bit is always ‘1’, which must be a “start bit” that indicates the beginning of a packet</li>
-        <li>the following 32 bits comprise the message</li>
-        <li>the second packet is the opposite (bitwise NOT) of the first packet (excluding the start bit) I repeated the above for the OFF signal from the thermostat. These were the packets:</li>
-      </ul>
-      <pre><code class="language-none">    100001000101111010000000100000000
+        <p>It seems that:</p>
+        <ul>
+          <li>there are 33 bits per packet</li>
+          <li>the first bit is always ‘1’, which must be a “start bit” that indicates the beginning of a packet</li>
+          <li>the following 32 bits comprise the message</li>
+          <li>the second packet is the opposite (bitwise NOT) of the first packet (excluding the start bit) I repeated the above for the OFF signal from the thermostat. These were the packets:</li>
+        </ul>
+        <pre><code class="language-none">    100001000101111010000000100000000
     111110111010000101111111011111111
 </code></pre>
-      <p>Now we can see that:</p>
-      <ul>
-        <li>the first 31 bits of the packet (excluding the start bit again) are the <em>same</em> in both the ON and OFF signals — this must be some sort of ID* — <strong>Update</strong>: it appears these aren’t always the same for all units – <a href="#update--30th-march-2016">see below</a></li>
-        <li>The final bit in the first packet indicates ON or OFF. 1 in the ON signal, 0 in the OFF signal</li>
-      </ul>
-      <p><em>( * the ID is either hardcoded into the thermostat and learned by the receiver during pairing, or it is created and shared during pairing. I hope it is the former, as it would be a pain to have to keep sniffing a signal again if the receiver ever loses contact with the transmitter! I haven’t tested this yet.)</em></p>
-      <p>Now that I had the packet contents, there was one more thing left to determine: the timings of the pulses and the gaps between them. Using Audacity, I measured (in nanoseconds) the length of:</p>
-      <ul>
-        <li>the initial delay between the transmitter putting out a signal (HIGH), to beginning the first packet — this was measured from when the random noise stopped to when the signal was first pulled LOW</li>
-        <li>the delay before the packet starts (from when it was pulled LOW to indicate a packet is coming, and when it goes HIGH for the first bit)</li>
-        <li>a long pulse</li>
-        <li>a short pulse</li>
-        <li>the pause between pulses</li>
-        <li>the delay between packets</li>
-      </ul>
-      <p>Most of these are constant values, except the delay between packets which appears to be random. However, I just recorded each of these and will replay the same values each time in my boiler control program. If you are following this yourself in order to hack an RCR10, <del datetime="2016-03-30T18:17:44+00:00">you probably don’t need to measure the lengths. You probably just need to decode the packets and plug the 1s and 0s into my boilercontrol program</del>(see <a href="#update--30th-march-2016">Update</a>, below).</p>
-      <h3 id="replaying-the-signals--boiler-control-program">Replaying the Signals — Boiler Control Program</h3>
-      <p>Now that I had sniffed the signals, it was time to see if I could replay them through my 433MHz transmitter, connected to my Raspberry Pi, to turn my boiler on and off. So, I created my <a href="https://github.com/rossharper/boilercontrol" target="_blank">“boilercontrol” program</a>.</p>
-      <p>It’s written in C++, based on stuff I’d read on various blogs and websites that I don’t remember, and uses the <a href="http://wiringpi.com/" title="WiringPi website">WiringPi</a> library to control the pins on the Raspberry Pi in order to send data to the transmitter. It’s written in C++ for two reasons:</p>
-      <ul>
-        <li>it compiles to native code that should mean it is more likely that the timings (that are measured in nanoseconds) will actually work</li>
-        <li>it would be portable to an Arduino with only small changes — due to needing accuracy to tens of nanoseconds, I was concerned that the fact that the Raspberry Pi does not have a real-time operating system may throw the timings out too far or be unreliable. An RTOS would allow my code to run with deterministic timings. So if it didn’t work on the Pi, I could try on an Arduino.</li>
-      </ul>
-      <p>The packet values and pauses are all hardcoded into the program currently. If I was doing my day job, and following proper software engineering practices, this would be configurable, and there would be unit tests… but this is a home project hack, so I won’t bother with that for now.</p>
-      <p>I tried this on the Pi… and it failed. No click from the boiler relay 🙁</p>
-      <p>To debug it, I set up my sniffer again. This time it would listen to the signals I was sending, rather than the original thermostat signals. Comparing my signals to the originals, I could see that they all seemed to be out a little: a little too long. Damned non real-time operating system! I can’t remember what the value was off the top of my head, but I recall it was in the region of 90ns. In true bodger style, I simply subtracted that from my values in the program and tried again.</p>
-      <p><strong>Eureka!</strong> It worked! The boiler clicked on as I issued the command:</p>
-      <div class="language-bash highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code>    <span class="nb">sudo</span> ./callforheat 1
+        <p>Now we can see that:</p>
+        <ul>
+          <li>the first 31 bits of the packet (excluding the start bit again) are the <em>same</em> in both the ON and OFF signals — this must be some sort of ID* — <strong>Update</strong>: it appears these aren’t always the same for all units – <a href="#update--30th-march-2016">see below</a></li>
+          <li>The final bit in the first packet indicates ON or OFF. 1 in the ON signal, 0 in the OFF signal</li>
+        </ul>
+        <p><em>( * the ID is either hardcoded into the thermostat and learned by the receiver during pairing, or it is created and shared during pairing. I hope it is the former, as it would be a pain to have to keep sniffing a signal again if the receiver ever loses contact with the transmitter! I haven’t tested this yet.)</em></p>
+        <p>Now that I had the packet contents, there was one more thing left to determine: the timings of the pulses and the gaps between them. Using Audacity, I measured (in nanoseconds) the length of:</p>
+        <ul>
+          <li>the initial delay between the transmitter putting out a signal (HIGH), to beginning the first packet — this was measured from when the random noise stopped to when the signal was first pulled LOW</li>
+          <li>the delay before the packet starts (from when it was pulled LOW to indicate a packet is coming, and when it goes HIGH for the first bit)</li>
+          <li>a long pulse</li>
+          <li>a short pulse</li>
+          <li>the pause between pulses</li>
+          <li>the delay between packets</li>
+        </ul>
+        <p>Most of these are constant values, except the delay between packets which appears to be random. However, I just recorded each of these and will replay the same values each time in my boiler control program. If you are following this yourself in order to hack an RCR10, <del datetime="2016-03-30T18:17:44+00:00">you probably don’t need to measure the lengths. You probably just need to decode the packets and plug the 1s and 0s into my boilercontrol program</del>(see <a href="#update--30th-march-2016">Update</a>, below).</p>
+        <h3 id="replaying-the-signals--boiler-control-program">Replaying the Signals — Boiler Control Program</h3>
+        <p>Now that I had sniffed the signals, it was time to see if I could replay them through my 433MHz transmitter, connected to my Raspberry Pi, to turn my boiler on and off. So, I created my <a href="https://github.com/rossharper/boilercontrol" target="_blank">“boilercontrol” program</a>.</p>
+        <p>It’s written in C++, based on stuff I’d read on various blogs and websites that I don’t remember, and uses the <a href="http://wiringpi.com/" title="WiringPi website">WiringPi</a> library to control the pins on the Raspberry Pi in order to send data to the transmitter. It’s written in C++ for two reasons:</p>
+        <ul>
+          <li>it compiles to native code that should mean it is more likely that the timings (that are measured in nanoseconds) will actually work</li>
+          <li>it would be portable to an Arduino with only small changes — due to needing accuracy to tens of nanoseconds, I was concerned that the fact that the Raspberry Pi does not have a real-time operating system may throw the timings out too far or be unreliable. An RTOS would allow my code to run with deterministic timings. So if it didn’t work on the Pi, I could try on an Arduino.</li>
+        </ul>
+        <p>The packet values and pauses are all hardcoded into the program currently. If I was doing my day job, and following proper software engineering practices, this would be configurable, and there would be unit tests… but this is a home project hack, so I won’t bother with that for now.</p>
+        <p>I tried this on the Pi… and it failed. No click from the boiler relay 🙁</p>
+        <p>To debug it, I set up my sniffer again. This time it would listen to the signals I was sending, rather than the original thermostat signals. Comparing my signals to the originals, I could see that they all seemed to be out a little: a little too long. Damned non real-time operating system! I can’t remember what the value was off the top of my head, but I recall it was in the region of 90ns. In true bodger style, I simply subtracted that from my values in the program and tried again.</p>
+        <p><strong>Eureka!</strong> It worked! The boiler clicked on as I issued the command:</p>
+        <div class="language-bash highlighter-rouge">
+          <div class="highlight">
+            <pre class="highlight"><code>    <span class="nb">sudo</span> ./callforheat 1
 </code></pre>
+          </div>
         </div>
-      </div>
-      <p>And off again with the command:</p>
-      <div class="language-bash highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code>    <span class="nb">sudo</span> ./callforheat 0
+        <p>And off again with the command:</p>
+        <div class="language-bash highlighter-rouge">
+          <div class="highlight">
+            <pre class="highlight"><code>    <span class="nb">sudo</span> ./callforheat 0
 </code></pre>
+          </div>
         </div>
-      </div>
-      <p><em>(the <code class="highlighter-rouge">sudo</code> was needed in order to access the pins via WiringPi — I believe this is no longer needed in the latest version of Raspbian at the time of writing)</em></p>
-      <p>Now I have a command that I can use, and write software around, to control my boiler. 🙂</p>
-      <h3 id="update--30th-march-2016">Update — 30th March 2016</h3>
-      <p>Github user <a href="https://github.com/PatchworkBoy" title="PatchworkBoy on Github" target="_blank">PatchworkBoy</a> found when he sniffed the code for his set that the on/off signals are <em>not</em> the same, exactly, like mine appeared to be. For his units, he found that the on/off codes were slightly different in in the middle too (at the 10th bit):</p>
-      <pre><code class="language-none">    ON packet pair
+        <p><em>(the <code class="highlighter-rouge">sudo</code> was needed in order to access the pins via WiringPi — I believe this is no longer needed in the latest version of Raspbian at the time of writing)</em></p>
+        <p>Now I have a command that I can use, and write software around, to control my boiler. 🙂</p>
+        <h3 id="update--30th-march-2016">Update — 30th March 2016</h3>
+        <p>Github user <a href="https://github.com/PatchworkBoy" title="PatchworkBoy on Github" target="_blank">PatchworkBoy</a> found when he sniffed the code for his set that the on/off signals are <em>not</em> the same, exactly, like mine appeared to be. For his units, he found that the on/off codes were slightly different in in the middle too (at the 10th bit):</p>
+        <pre><code class="language-none">    ON packet pair
     1 0001 1000 0100 1000 0000 0001 0000 0001
     1 1110 0111 1011 0111 1111 1110 1111 1110
 
@@ -150,105 +149,105 @@
     1 0001 1000 1100 1000 0000 0001 0000 0000
     1 1110 0111 0011 0111 1111 1110 1111 1111
 </code></pre>
-      <p>Furthermore, he found that the timings (the gaps between packets and pulses etc) were also different. Therefore, if you are following this blog post and attempting to decipher the code for your own units, you’ll probably have to read both the on/off codes and measure them fully, as it appears you may not be able to assume that these details will be the same as they were for me.</p>
-      <footer>
-        <div class="postfooterfeaturebox">
-          <span class="postfootertitle">Categories:</span>&nbsp;<a href="https://www.rossharper.net/categories/heating-project">Heating Project</a>, <a href="https://www.rossharper.net/categories/iot">IoT</a>, <a href="https://www.rossharper.net/categories/technology">Technology</a>
-          <br />
-          <span class="postfootertitle">Tags:</span>&nbsp;<a href="https://www.rossharper.net/tags/433mhz">433MHz</a>, <a href="https://www.rossharper.net/tags/audacity">audacity</a>, <a href="https://www.rossharper.net/tags/boiler">boiler</a>, <a href="https://www.rossharper.net/tags/control">control</a>, <a href="https://www.rossharper.net/tags/electronics">electronics</a>, <a href="https://www.rossharper.net/tags/heating">heating</a>, <a href="https://www.rossharper.net/tags/internet-of-things">Internet of Things</a>, <a href="https://www.rossharper.net/tags/iot">IoT</a>, <a href="https://www.rossharper.net/tags/project">project</a>, <a href="https://www.rossharper.net/tags/radio">radio</a>, <a href="https://www.rossharper.net/tags/raspberry-pi">raspberry pi</a>, <a href="https://www.rossharper.net/tags/rcr10-433">RCR10/433</a>, <a href="https://www.rossharper.net/tags/siemens">siemens</a>, <a href="https://www.rossharper.net/tags/thermostat">thermostat</a>
+        <p>Furthermore, he found that the timings (the gaps between packets and pulses etc) were also different. Therefore, if you are following this blog post and attempting to decipher the code for your own units, you’ll probably have to read both the on/off codes and measure them fully, as it appears you may not be able to assume that these details will be the same as they were for me.</p>
+        <footer>
+          <div class="postfooterfeaturebox">
+            <span class="postfootertitle">Categories:</span>&nbsp;<a href="https://www.rossharper.net/categories/heating-project">Heating Project</a>, <a href="https://www.rossharper.net/categories/iot">IoT</a>, <a href="https://www.rossharper.net/categories/technology">Technology</a>
+            <br />
+            <span class="postfootertitle">Tags:</span>&nbsp;<a href="https://www.rossharper.net/tags/433mhz">433MHz</a>, <a href="https://www.rossharper.net/tags/audacity">audacity</a>, <a href="https://www.rossharper.net/tags/boiler">boiler</a>, <a href="https://www.rossharper.net/tags/control">control</a>, <a href="https://www.rossharper.net/tags/electronics">electronics</a>, <a href="https://www.rossharper.net/tags/heating">heating</a>, <a href="https://www.rossharper.net/tags/internet-of-things">Internet of Things</a>, <a href="https://www.rossharper.net/tags/iot">IoT</a>, <a href="https://www.rossharper.net/tags/project">project</a>, <a href="https://www.rossharper.net/tags/radio">radio</a>, <a href="https://www.rossharper.net/tags/raspberry-pi">raspberry pi</a>, <a href="https://www.rossharper.net/tags/rcr10-433">RCR10/433</a>, <a href="https://www.rossharper.net/tags/siemens">siemens</a>, <a href="https://www.rossharper.net/tags/thermostat">thermostat</a>
+          </div>
+          <div class="paginationlinks clearfix">
+            <a href="https://www.rossharper.net/2014/05/glentress-mountain-biking/" class="paginationprev">&larr; Previous post: Glentress – Mountain Biking</a>
+            <a href="https://www.rossharper.net/2016/02/parameterized-junit4-unit-tests-in-kotlin/" class="paginationnext">Next post: Parameterized JUnit4 Unit Tests in Kotlin &rarr;</a>
+          </div>
+        </footer>
+      </article>
+    </main>
+    <footer>
+      <div class="footlinkscontainer clearfix">
+        <div class="footlinks">
+          <h2 class="footlinktitle">Archive</h2>
+          <ul>
+            <li><a href="https://www.rossharper.net/2017/02/">February 2017</a></li>
+            <li><a href="https://www.rossharper.net/2016/02/">February 2016</a></li>
+            <li><a href="https://www.rossharper.net/2015/11/">November 2015</a></li>
+            <li><a href="https://www.rossharper.net/2014/05/">May 2014</a></li>
+            <li><a href="https://www.rossharper.net/2013/01/">January 2013</a></li>
+            <li><a href="https://www.rossharper.net/2012/01/">January 2012</a></li>
+            <li><a href="https://www.rossharper.net/2012/02/">February 2012</a></li>
+            <li><a href="https://www.rossharper.net/2012/03/">March 2012</a></li>
+            <li><a href="https://www.rossharper.net/2012/04/">April 2012</a></li>
+            <li><a href="https://www.rossharper.net/2011/06/">June 2011</a></li>
+            <li><a href="https://www.rossharper.net/2011/11/">November 2011</a></li>
+          </ul>
         </div>
-        <div class="paginationlinks clearfix">
-          <a href="https://www.rossharper.net/2014/05/glentress-mountain-biking/" class="paginationprev">&larr; Previous post: Glentress – Mountain Biking</a>
-          <a href="https://www.rossharper.net/2016/02/parameterized-junit4-unit-tests-in-kotlin/" class="paginationnext">Next post: Parameterized JUnit4 Unit Tests in Kotlin &rarr;</a>
+        <div class="footlinks">
+          <h2 class="footlinktitle">Categories</h2>
+          <ul>
+            <li><a href="https://www.rossharper.net/category/photography">Photography</a></li>
+            <li><a href="https://www.rossharper.net/category/travel">Travel</a></li>
+            <li><a href="https://www.rossharper.net/category/wild-camping">Wild Camping</a></li>
+            <li><a href="https://www.rossharper.net/category/rewind-from-the-archive">Rewind: From The Archive</a></li>
+            <li><a href="https://www.rossharper.net/category/general">General</a></li>
+            <li><a href="https://www.rossharper.net/category/programming">Programming</a></li>
+            <li><a href="https://www.rossharper.net/category/technology">Technology</a></li>
+            <li><a href="https://www.rossharper.net/category/web">Web</a></li>
+            <li><a href="https://www.rossharper.net/category/wordpress">Wordpress</a></li>
+            <li><a href="https://www.rossharper.net/category/cycling">Cycling</a></li>
+            <li><a href="https://www.rossharper.net/category/mountain-biking">Mountain Biking</a></li>
+            <li><a href="https://www.rossharper.net/category/heating-project">Heating Project</a></li>
+            <li><a href="https://www.rossharper.net/category/iot">IoT</a></li>
+          </ul>
         </div>
-      </footer>
-    </article>
-  </main>
-  <footer>
-    <div class="footlinkscontainer clearfix">
-      <div class="footlinks">
-        <h2 class="footlinktitle">Archive</h2>
-        <ul>
-          <li><a href="https://www.rossharper.net/2017/02/">February 2017</a></li>
-          <li><a href="https://www.rossharper.net/2016/02/">February 2016</a></li>
-          <li><a href="https://www.rossharper.net/2015/11/">November 2015</a></li>
-          <li><a href="https://www.rossharper.net/2014/05/">May 2014</a></li>
-          <li><a href="https://www.rossharper.net/2013/01/">January 2013</a></li>
-          <li><a href="https://www.rossharper.net/2012/01/">January 2012</a></li>
-          <li><a href="https://www.rossharper.net/2012/02/">February 2012</a></li>
-          <li><a href="https://www.rossharper.net/2012/03/">March 2012</a></li>
-          <li><a href="https://www.rossharper.net/2012/04/">April 2012</a></li>
-          <li><a href="https://www.rossharper.net/2011/06/">June 2011</a></li>
-          <li><a href="https://www.rossharper.net/2011/11/">November 2011</a></li>
-        </ul>
+        <div class="footlinks">
+          <h2 class="footlinktitle">Tags</h2>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/alderman-s-brow'>Alderman's Brow</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/alderman-s-hill'>Alderman's Hill</a>
+          <a style='font-size: 126%' href='https://www.rossharper.net/tag/archive'>Archive</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/bbc'>BBC</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/bicycle'>Bicycle</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/bike'>Bike</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/cycling'>Cycling</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/dovestone-edge'>Dovestone Edge</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/eglin-lane'>Eglin Lane</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/frozen'>Frozen</a>
+          <a style='font-size: 126%' href='https://www.rossharper.net/tag/galloway'>Galloway</a>
+          <a style='font-size: 126%' href='https://www.rossharper.net/tag/galloway-forest-park'>Galloway Forest Park</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/hills'>Hills</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/holcombe-moor'>Holcombe Moor</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/hooden-s-hill'>Hooden's Hill</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/lake'>Lake</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/memorial'>Memorial</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/peak-district'>Peak District</a>
+          <a style='font-size: 170%' href='https://www.rossharper.net/tag/photography'>Photography</a>
+          <a style='font-size: 126%' href='https://www.rossharper.net/tag/programming'>Programming</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/ramsbottom'>Ramsbottom</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/reservoir'>Reservoir</a>
+          <a style='font-size: 126%' href='https://www.rossharper.net/tag/rewind'>Rewind</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/roman-numerals'>Roman Numerals</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/saddleworth-moor'>Saddleworth Moor</a>
+          <a style='font-size: 141%' href='https://www.rossharper.net/tag/scotland'>Scotland</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/scout-moor'>Scout Moor</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/sheep'>Sheep</a>
+          <a style='font-size: 126%' href='https://www.rossharper.net/tag/snow'>Snow</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/starstax'>StarStaX</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/tdd'>TDD</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/tent'>Tent</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/the-dungeon-hills'>The Dungeon Hills</a>
+          <a style='font-size: 126%' href='https://www.rossharper.net/tag/travel'>Travel</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/unit-tests'>Unit Tests</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/walking'>Walking</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/wild-camping'>Wild Camping</a>
+          <a style='font-size: 126%' href='https://www.rossharper.net/tag/winter'>Winter</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/wirral-way'>Wirral Way</a>
+          <a style='font-size: 126%' href='https://www.rossharper.net/tag/camping'>camping</a>
+          <a style='font-size: 70%' href='https://www.rossharper.net/tag/glentress'>glentress</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/long-exposure'>long exposure</a>
+          <a style='font-size: 126%' href='https://www.rossharper.net/tag/stars'>stars</a>
+          <a style='font-size: 106%' href='https://www.rossharper.net/tag/startrails'>startrails</a>
+        </div>
       </div>
-      <div class="footlinks">
-        <h2 class="footlinktitle">Categories</h2>
-        <ul>
-          <li><a href="https://www.rossharper.net/category/photography">Photography</a></li>
-          <li><a href="https://www.rossharper.net/category/travel">Travel</a></li>
-          <li><a href="https://www.rossharper.net/category/wild-camping">Wild Camping</a></li>
-          <li><a href="https://www.rossharper.net/category/rewind-from-the-archive">Rewind: From The Archive</a></li>
-          <li><a href="https://www.rossharper.net/category/general">General</a></li>
-          <li><a href="https://www.rossharper.net/category/programming">Programming</a></li>
-          <li><a href="https://www.rossharper.net/category/technology">Technology</a></li>
-          <li><a href="https://www.rossharper.net/category/web">Web</a></li>
-          <li><a href="https://www.rossharper.net/category/wordpress">Wordpress</a></li>
-          <li><a href="https://www.rossharper.net/category/cycling">Cycling</a></li>
-          <li><a href="https://www.rossharper.net/category/mountain-biking">Mountain Biking</a></li>
-          <li><a href="https://www.rossharper.net/category/heating-project">Heating Project</a></li>
-          <li><a href="https://www.rossharper.net/category/iot">IoT</a></li>
-        </ul>
-      </div>
-      <div class="footlinks">
-        <h2 class="footlinktitle">Tags</h2>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/alderman-s-brow'>Alderman's Brow</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/alderman-s-hill'>Alderman's Hill</a>
-        <a style='font-size: 126%' href='https://www.rossharper.net/tag/archive'>Archive</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/bbc'>BBC</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/bicycle'>Bicycle</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/bike'>Bike</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/cycling'>Cycling</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/dovestone-edge'>Dovestone Edge</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/eglin-lane'>Eglin Lane</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/frozen'>Frozen</a>
-        <a style='font-size: 126%' href='https://www.rossharper.net/tag/galloway'>Galloway</a>
-        <a style='font-size: 126%' href='https://www.rossharper.net/tag/galloway-forest-park'>Galloway Forest Park</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/hills'>Hills</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/holcombe-moor'>Holcombe Moor</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/hooden-s-hill'>Hooden's Hill</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/lake'>Lake</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/memorial'>Memorial</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/peak-district'>Peak District</a>
-        <a style='font-size: 170%' href='https://www.rossharper.net/tag/photography'>Photography</a>
-        <a style='font-size: 126%' href='https://www.rossharper.net/tag/programming'>Programming</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/ramsbottom'>Ramsbottom</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/reservoir'>Reservoir</a>
-        <a style='font-size: 126%' href='https://www.rossharper.net/tag/rewind'>Rewind</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/roman-numerals'>Roman Numerals</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/saddleworth-moor'>Saddleworth Moor</a>
-        <a style='font-size: 141%' href='https://www.rossharper.net/tag/scotland'>Scotland</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/scout-moor'>Scout Moor</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/sheep'>Sheep</a>
-        <a style='font-size: 126%' href='https://www.rossharper.net/tag/snow'>Snow</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/starstax'>StarStaX</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/tdd'>TDD</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/tent'>Tent</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/the-dungeon-hills'>The Dungeon Hills</a>
-        <a style='font-size: 126%' href='https://www.rossharper.net/tag/travel'>Travel</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/unit-tests'>Unit Tests</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/walking'>Walking</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/wild-camping'>Wild Camping</a>
-        <a style='font-size: 126%' href='https://www.rossharper.net/tag/winter'>Winter</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/wirral-way'>Wirral Way</a>
-        <a style='font-size: 126%' href='https://www.rossharper.net/tag/camping'>camping</a>
-        <a style='font-size: 70%' href='https://www.rossharper.net/tag/glentress'>glentress</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/long-exposure'>long exposure</a>
-        <a style='font-size: 126%' href='https://www.rossharper.net/tag/stars'>stars</a>
-        <a style='font-size: 106%' href='https://www.rossharper.net/tag/startrails'>startrails</a>
-      </div>
-    </div>
-    <div class="footercopy">Copyright &copy; Ross Harper</div>
-  </footer>
-</body>
+      <div class="footercopy">Copyright &copy; Ross Harper</div>
+    </footer>
+  </body>
 </html>
