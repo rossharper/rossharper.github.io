@@ -284,18 +284,18 @@ hr:after {
     text-align: right;
 }
 
-.footlinks {
+.footlinkscontainer {
     border-bottom: 1px solid #E2DDDE;
     padding: 10px;
 }
 
-.footlinks a:link, 
-.footlinks a:active, 
-.footlinks a:visited {
+.footlinkscontainer a:link, 
+.footlinkscontainer a:active, 
+.footlinkscontainer a:visited {
     color:#886353; 
     text-decoration:none;
 }
-.footlinks a:hover {
+.footlinkscontainer a:hover {
     color:#886353; 
     text-decoration:underline;
 }
@@ -307,20 +307,15 @@ h2.footlinktitle {
     margin: 0 0 10px;
 }
 
-.categoryfootlinks {
+.footlinks {
     width: 33%;
     float: left
 }
 
-.categoryfootlinks ul {
+.footlinks ul {
     list-style-type: none; 
     margin: 0; 
     padding: 0;
-}
-
-.tagfootlinks {
-    width: 33%;
-    float: left;
 }
 
 .footercopy {
