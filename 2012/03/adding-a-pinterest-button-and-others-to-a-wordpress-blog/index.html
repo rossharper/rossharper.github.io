@@ -1,242 +1,191 @@
-<!doctype html> 
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Adding a Pinterest button (and others) to a WordPress Blog | 
-      rossharper.net</title>
-    <link rel="stylesheet" href="https://www.rossharper.net/css/style.css">
-    <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">    
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Adding a Pinterest button (and others) to a WordPress Blog" />
-    <meta property="og:description" content="Creating a plugin to adding Pinterest sharing buttons to a WordPress Blog." />
-    <meta property="article:published_time" content="2012-03-21 20:59:40 +0000" />
-    
-    <meta property="og:image" content="https://www.rossharper.net/img/wp-imports/2012/03/Pinterest_Logo.png" />
-    <meta property="og:url" content="https://www.rossharper.net/2012/03/adding-a-pinterest-button-and-others-to-a-wordpress-blog/" />
-    
-    <meta property="og:site_name" content="rossharper.net" />
-    <meta property="og:locale" content="en_GB" />
-    
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:text:title" content="Adding a Pinterest button (and others) to a WordPress Blog" />
-    <meta name="twitter:description" content="Creating a plugin to adding Pinterest sharing buttons to a WordPress Blog." />
-    <meta name="twitter:url" content="https://www.rossharper.net/2012/03/adding-a-pinterest-button-and-others-to-a-wordpress-blog/" />
-    <meta name="twitter:image" content="https://www.rossharper.net/img/wp-imports/2012/03/Pinterest_Logo.png" />
-    
-  </head>
-  <body>
-
-    <header id="bannerheader">
+    <title>Adding a Pinterest button (and others) to a WordPress Blog | rossharper.net</title>
+  </title>
+  <link rel="stylesheet" href="https://www.rossharper.net/css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Adding a Pinterest button (and others) to a WordPress Blog" />
+  <meta property="og:description" content="Creating a plugin to adding Pinterest sharing buttons to a WordPress Blog." />
+  <meta property="article:published_time" content="2012-03-21 20:59:40 +0000" />
+  <meta property="og:image" content="https://www.rossharper.net/img/wp-imports/2012/03/Pinterest_Logo.png" />
+  <meta property="og:url" content="https://www.rossharper.net/2012/03/adding-a-pinterest-button-and-others-to-a-wordpress-blog/" />
+  <meta property="og:site_name" content="rossharper.net" />
+  <meta property="og:locale" content="en_GB" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:text:title" content="Adding a Pinterest button (and others) to a WordPress Blog" />
+  <meta name="twitter:description" content="Creating a plugin to adding Pinterest sharing buttons to a WordPress Blog." />
+  <meta name="twitter:url" content="https://www.rossharper.net/2012/03/adding-a-pinterest-button-and-others-to-a-wordpress-blog/" />
+  <meta name="twitter:image" content="https://www.rossharper.net/img/wp-imports/2012/03/Pinterest_Logo.png" />
+</head>
+<body>
+  <header id="bannerheader">
     <div id="bannerheading">
-        <a href="https://www.rossharper.net">rossharper.net</a>
+      <a href="https://www.rossharper.net">rossharper.net</a>
     </div>
-</header>
-    <nav>
+  </header>
+  <nav>
     <div id="navitems">
+      <ul>
+        <li><a href="https://www.rossharper.net/">Home</a></li>
+        <li><a href="https://www.rossharper.net/about">About</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <article>
+      <header>
+        <h2>Adding a Pinterest button (and others) to a WordPress Blog</h2>
+        <p class="postdate">Posted on Wednesday, 21st March 2012</p>
+      </header>
+      <p><img src="https://www.rossharper.net/img/wp-imports/2012/03/Pinterest_Logo.png" alt="Pinterest_Logo" title="Pinterest_Logo" /></p>
+      <p><a href="http://www.pinterest.com" title="Pinterest website" target="_blank">Pinterest</a> seems to have taken off hugely recently and has become the social network du jour. I had a dabble with it when I first got an invite and “pinned” some of my own photos there and some other links I found interesting. However, it never really captivated me and I have largely ignored it since. While I, and many of my peers, may not have taken to this new way to share, others have. <em>Lots</em> of others have. It seems to have become very popular amongst the female demographic in particular. I already had added support to share links to my blog posts via Twitter, Facebook, and Google+, so I decided to add a Pinterest “Pin-it” button too.</p>
+      <p><img src="https://www.rossharper.net/img/wp-imports/2012/03/ShareBar.png" alt="ShareBar" title="ShareBar" /></p>
+      <p>It’s a relatively simple thing to do. <!--more--></p>
+      <h3 id="plugin-vs-rolling-your-own">Plugin vs. Rolling Your Own</h3>
+      <p>I should have called this <em>Adding a Pinterest Button to a WordPress Blog – The Quick &amp; Dirty Way</em>. When I first set up the blog, I knew I wanted to add sharing support. I briefly looked at a few off-the-shelf WordPress plugins, but none of them fitted what I wanted <em>exactly</em>. So, I just baked my own sharing buttons into my custom WordPress theme. With hindsight, I should have developed this as a plugin, but I was new to WordPress at the time, so I didn’t bother. Putting this stuff into a configurable plugin is a todo task for the future. If you’d rather use a plugin, try <a href="http://wordpress.org/extend/plugins/search.php?q=pinterest" title="Search for Pinterest Wordpress plugins" target="_blank">one of these</a>. If you don’t like them, or, like me, prefer to roll your own, continue reading…</p>
+      <h3 id="my-existing-sharing-setup">My Existing Sharing Setup</h3>
+      <p>Firstly, I added a new PHP file to my theme that contains the code that generates the sharing buttons: <code class="highlighter-rouge">sharing.php</code></p>
+      <p>As I wanted to have the sharing buttons at the bottom of each post in the main view, and also at the bottom of the post on the single post view, I needed to add them to <em><a href="http://codex.wordpress.org/The_Loop" title="The WordPress Loop documentation" target="_blank">the loop</a></em>.</p>
+      <p>For my theme, I have loop templates for the single and index pages (<code class="highlighter-rouge">loop-single.php</code> and <code class="highlighter-rouge">loop.php</code>), within which I include the <code class="highlighter-rouge">sharing.php</code> script. I have a feature on my blog called the “postfeaturebox”, which sits below the main content of the post, so I added the sharing script here:</p>
+      <script src="http://gist.github.com/2128034.js"></script>
+      <p>The <code class="highlighter-rouge">sharing.php</code> script contains the markup and PHP code for defining the sharing buttons:</p>
+      <script src="http://gist.github.com/2128334.js"></script>
+      <p>Now, these don’t all work on their own. In addition we need to add some scripts from the sites in question that load with our page, find the buttons, and perform some magic on them to make them active. These are added in my theme’s <code class="highlighter-rouge">functions.php</code> script.</p>
+      <script src="http://gist.github.com/2128490.js"></script>
+      <p>Also, I’ve done some tweaking to the CSS classes for the buttons in order to position them the way I want:</p>
+      <script src="https://gist.github.com/rossharper/2128506.js"></script>
+      <h3 id="adding-the-pin-it-button">Adding the Pin It Button</h3>
+      <p>Adding the Pinterest “Pin it” button is much the same. As a starting point, I used the instructions on</p>
+      <p><a href="http://pinterest.com/about/goodies/" title="Pinterest Goodies page" target="_blank">Pinterest’s Goodies page</a> for adding a “Pin it” button. From there, I needed to customise the code so that each button was specific to the post in question; I needed to add: * The permalink URL for the post * The default description, which would be the post title * The URL for the featured image, to use as the pinned image Getting the permalink and title are straightforward, via calls to <code class="highlighter-rouge">the_permalink()</code> and <code class="highlighter-rouge">the_title()</code>, respectively.</p>
+      <p>Getting the featured image is a little more complex, so I created a new function for it in my <code class="highlighter-rouge">functions.php</code>:</p>
+      <script src="http://gist.github.com/2152690.js"></script>
+      <p>This checks if the post has an image via <code class="highlighter-rouge">has_post_thumbnail()</code>. If it does, it retrieves it via <code class="highlighter-rouge">get_post_thumbnail_id( $post-&gt;ID )</code> and <code class="highlighter-rouge">wp_get_attachment_image_src( $thumb_id, 'full', false );</code>. The image src is returned as an array, so we get the actual URL from the array by getting the first item.</p>
+      <p>Notice that I have chosen to get full-size images. You may wish to use a different size. Just in case the post does not have any images in it, the header image from the theme can be returned using a call to <code class="highlighter-rouge">header_image()</code>. Notice that I have commented this out because my current theme doesn’t use header images yet, the banner is hardcoded in my theme instead. If you have a hardcoded image you want to use, you can modify this code.</p>
+      <p>Finally, we can write the markup for the actual button itself, in <code class="highlighter-rouge">sharing.php</code>:</p>
+      <script src="http://gist.github.com/2128610.js"></script>
+      <p>Again, we need to add a script in <code class="highlighter-rouge">functions.php</code>. Here it is with the Pinterest script added:</p>
+      <script src="http://gist.github.com/2128718.js"></script>
+      <p>And, do some CSS positioning:</p>
+      <script src="http://gist.github.com/2128738.js"></script>
+      <!-- markdownlint-disable MD026 -->
+      <h3 id="et-voila">Et, Voila!</h3>
+      <p>That should be it. The posts should now include a Pinterest “Pin it” button along with the other sharing buttons. When I click on the button, it brings up Pinterest’s pinning dialog, with the appropriate details filled out from my post.</p>
+      <p><img src="https://www.rossharper.net/img/wp-imports/2012/03/Pinning.png" alt="Pinning" title="Pinning" /></p>
+      <h3 id="other-resources--notes">Other resources &amp; notes</h3>
+      <p>Some more handy resources:</p>
+      <ul>
+        <li><a href="http://dev.twitter.com/docs/tweet-button" title="Twitter Tweet Button at Twitter" target="_blank">Twitter Tweet Button</a></li>
+        <li><a href="http://developers.facebook.com/docs/share/" title="Facebook Share Button at Facebook Developers" target="_blank">Facebook Share Button</a> — Note that this is deprecated in favour of the <a href="http://developers.facebook.com/docs/reference/plugins/like/" title="Facebook Like Button at Facebook Developers" target="_blank">Like button</a>. I used it because I preferred it at the time. I plan on upgrading this to use Facebook’s latest sharing tools.</li>
+        <li><a href="http://www.google.com/webmasters/+1/button/" title="Google +1 Button at Google" target="_blank">Google+ +1 Button</a></li>
+        <li>For Facebook sharing, I am also using the <a href="http://blog.ashfame.com/2011/02/wordpress-plugin-fix-facebook-like-thumbnail/" title="Facebook Like Thumbnail plugin by Ashish Saini" target="_blank">Facebook Like Thumbnail plugin</a> by <a href="http://blog.ashfame.com/" title="Ashish Saini's blog" target="_blank">Ashish Saini</a>, which helps by using the featured image of the post for Facebook sharing.</li>
+      </ul>
+      <h3 id="update">UPDATE</h3>
+      <p>You may have noticed that I have since removed the Facebook and Google+ sharing buttons. My main reason for this was because the formatting had gone wrong on them, but also for performance reasons — there are just to many scripts running on each page. I’ll probably remove Pinterest soon and just leave Twitter.</p>
+      <footer>
+        <div class="postfooterfeaturebox">
+          <span class="postfootertitle">Categories:</span>&nbsp;<a href="https://www.rossharper.net/categories/general">General</a>, <a href="https://www.rossharper.net/categories/programming">Programming</a>, <a href="https://www.rossharper.net/categories/technology">Technology</a>, <a href="https://www.rossharper.net/categories/web">Web</a>, <a href="https://www.rossharper.net/categories/wordpress">Wordpress</a>
+          <br />
+          <span class="postfootertitle">Tags:</span>&nbsp;<a href="https://www.rossharper.net/tags/1">+1</a>, <a href="https://www.rossharper.net/tags/blog">blog</a>, <a href="https://www.rossharper.net/tags/blogging">Blogging</a>, <a href="https://www.rossharper.net/tags/button">Button</a>, <a href="https://www.rossharper.net/tags/css">CSS</a>, <a href="https://www.rossharper.net/tags/facebook">Facebook</a>, <a href="https://www.rossharper.net/tags/google">Google+</a>, <a href="https://www.rossharper.net/tags/html">HTML</a>, <a href="https://www.rossharper.net/tags/php">PHP</a>, <a href="https://www.rossharper.net/tags/pin-it">Pin It</a>, <a href="https://www.rossharper.net/tags/pinterest">Pinterest</a>, <a href="https://www.rossharper.net/tags/programming">Programming</a>, <a href="https://www.rossharper.net/tags/sharing">Sharing</a>, <a href="https://www.rossharper.net/tags/social">Social</a>, <a href="https://www.rossharper.net/tags/technology">Technology</a>, <a href="https://www.rossharper.net/tags/theme">theme</a>, <a href="https://www.rossharper.net/tags/twitter">Twitter</a>, <a href="https://www.rossharper.net/tags/web">Web</a>, <a href="https://www.rossharper.net/tags/website">Website</a>, <a href="https://www.rossharper.net/tags/wordpress">wordpress</a>
+        </div>
+        <div class="paginationlinks clearfix">
+          <a href="https://www.rossharper.net/2012/03/rewind-amsterdam/" class="paginationprev">&larr; Previous post: Rewind: Amsterdam</a>
+          <a href="https://www.rossharper.net/2012/03/queen-elizabeth-ii-opens-mediacityuk/" class="paginationnext">Next post: Queen Elizabeth II Opens MediaCity:UK &rarr;</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+  <footer>
+    <div class="footlinkscontainer clearfix">
+      <div class="footlinks">
+        <h2 class="footlinktitle">Archive</h2>
         <ul>
-            <li><a href="https://www.rossharper.net/">Home</a></li>
-            <li><a href="https://www.rossharper.net/about">About</a></li>
+          <li><a href="https://www.rossharper.net/2017/02/">February 2017</a></li>
+          <li><a href="https://www.rossharper.net/2016/02/">February 2016</a></li>
+          <li><a href="https://www.rossharper.net/2015/11/">November 2015</a></li>
+          <li><a href="https://www.rossharper.net/2014/05/">May 2014</a></li>
+          <li><a href="https://www.rossharper.net/2013/01/">January 2013</a></li>
+          <li><a href="https://www.rossharper.net/2012/01/">January 2012</a></li>
+          <li><a href="https://www.rossharper.net/2012/02/">February 2012</a></li>
+          <li><a href="https://www.rossharper.net/2012/03/">March 2012</a></li>
+          <li><a href="https://www.rossharper.net/2012/04/">April 2012</a></li>
+          <li><a href="https://www.rossharper.net/2011/06/">June 2011</a></li>
+          <li><a href="https://www.rossharper.net/2011/11/">November 2011</a></li>
         </ul>
-    </div>
-</nav>
-
-
-    <main>
-
-  
-  <article>
-    <header>
-    <h2>Adding a Pinterest button (and others) to a WordPress Blog</h2>
-    <p class="postdate">Posted on Wednesday, 21st March 2012</p>
-</header>
-    <p><img src="https://www.rossharper.net/img/wp-imports/2012/03/Pinterest_Logo.png" alt="Pinterest_Logo" title="Pinterest_Logo" /></p>
-
-<p><a href="http://www.pinterest.com" title="Pinterest website" target="_blank">Pinterest</a> seems to have taken off hugely recently and has become the social network du jour. I had a dabble with it when I first got an invite and “pinned” some of my own photos there and some other links I found interesting. However, it never really captivated me and I have largely ignored it since. While I, and many of my peers, may not have taken to this new way to share, others have. <em>Lots</em> of others have. It seems to have become very popular amongst the female demographic in particular. I already had added support to share links to my blog posts via Twitter, Facebook, and Google+, so I decided to add a Pinterest “Pin-it” button too.</p>
-
-<p><img src="https://www.rossharper.net/img/wp-imports/2012/03/ShareBar.png" alt="ShareBar" title="ShareBar" /></p>
-
-<p>It’s a relatively simple thing to do. <!--more--></p>
-
-<h3 id="plugin-vs-rolling-your-own">Plugin vs. Rolling Your Own</h3>
-
-<p>I should have called this <em>Adding a Pinterest Button to a WordPress Blog – The Quick &amp; Dirty Way</em>. When I first set up the blog, I knew I wanted to add sharing support. I briefly looked at a few off-the-shelf WordPress plugins, but none of them fitted what I wanted <em>exactly</em>. So, I just baked my own sharing buttons into my custom WordPress theme. With hindsight, I should have developed this as a plugin, but I was new to WordPress at the time, so I didn’t bother. Putting this stuff into a configurable plugin is a todo task for the future. If you’d rather use a plugin, try <a href="http://wordpress.org/extend/plugins/search.php?q=pinterest" title="Search for Pinterest Wordpress plugins" target="_blank">one of these</a>. If you don’t like them, or, like me, prefer to roll your own, continue reading…</p>
-
-<h3 id="my-existing-sharing-setup">My Existing Sharing Setup</h3>
-
-<p>Firstly, I added a new PHP file to my theme that contains the code that generates the sharing buttons: <code class="highlighter-rouge">sharing.php</code></p>
-
-<p>As I wanted to have the sharing buttons at the bottom of each post in the main view, and also at the bottom of the post on the single post view, I needed to add them to <em><a href="http://codex.wordpress.org/The_Loop" title="The WordPress Loop documentation" target="_blank">the loop</a></em>.</p>
-
-<p>For my theme, I have loop templates for the single and index pages (<code class="highlighter-rouge">loop-single.php</code> and <code class="highlighter-rouge">loop.php</code>), within which I include the <code class="highlighter-rouge">sharing.php</code> script. I have a feature on my blog called the “postfeaturebox”, which sits below the main content of the post, so I added the sharing script here:</p>
-
-<script src="http://gist.github.com/2128034.js"></script>
-
-<p>The <code class="highlighter-rouge">sharing.php</code> script contains the markup and PHP code for defining the sharing buttons:</p>
-
-<script src="http://gist.github.com/2128334.js"></script>
-
-<p>Now, these don’t all work on their own. In addition we need to add some scripts from the sites in question that load with our page, find the buttons, and perform some magic on them to make them active. These are added in my theme’s <code class="highlighter-rouge">functions.php</code> script.</p>
-
-<script src="http://gist.github.com/2128490.js"></script>
-
-<p>Also, I’ve done some tweaking to the CSS classes for the buttons in order to position them the way I want:</p>
-
-<script src="https://gist.github.com/rossharper/2128506.js"></script>
-
-<h3 id="adding-the-pin-it-button">Adding the Pin It Button</h3>
-
-<p>Adding the Pinterest “Pin it” button is much the same. As a starting point, I used the instructions on</p>
-
-<p><a href="http://pinterest.com/about/goodies/" title="Pinterest Goodies page" target="_blank">Pinterest’s Goodies page</a> for adding a “Pin it” button. From there, I needed to customise the code so that each button was specific to the post in question; I needed to add: * The permalink URL for the post * The default description, which would be the post title * The URL for the featured image, to use as the pinned image Getting the permalink and title are straightforward, via calls to <code class="highlighter-rouge">the_permalink()</code> and <code class="highlighter-rouge">the_title()</code>, respectively.</p>
-
-<p>Getting the featured image is a little more complex, so I created a new function for it in my <code class="highlighter-rouge">functions.php</code>:</p>
-
-<script src="http://gist.github.com/2152690.js"></script>
-
-<p>This checks if the post has an image via <code class="highlighter-rouge">has_post_thumbnail()</code>. If it does, it retrieves it via <code class="highlighter-rouge">get_post_thumbnail_id( $post-&gt;ID )</code> and <code class="highlighter-rouge">wp_get_attachment_image_src( $thumb_id, 'full', false );</code>. The image src is returned as an array, so we get the actual URL from the array by getting the first item.</p>
-
-<p>Notice that I have chosen to get full-size images. You may wish to use a different size. Just in case the post does not have any images in it, the header image from the theme can be returned using a call to <code class="highlighter-rouge">header_image()</code>. Notice that I have commented this out because my current theme doesn’t use header images yet, the banner is hardcoded in my theme instead. If you have a hardcoded image you want to use, you can modify this code.</p>
-
-<p>Finally, we can write the markup for the actual button itself, in <code class="highlighter-rouge">sharing.php</code>:</p>
-
-<script src="http://gist.github.com/2128610.js"></script>
-
-<p>Again, we need to add a script in <code class="highlighter-rouge">functions.php</code>. Here it is with the Pinterest script added:</p>
-
-<script src="http://gist.github.com/2128718.js"></script>
-
-<p>And, do some CSS positioning:</p>
-
-<script src="http://gist.github.com/2128738.js"></script>
-
-<!-- markdownlint-disable MD026 -->
-<h3 id="et-voila">Et, Voila!</h3>
-
-<p>That should be it. The posts should now include a Pinterest “Pin it” button along with the other sharing buttons. When I click on the button, it brings up Pinterest’s pinning dialog, with the appropriate details filled out from my post.</p>
-
-<p><img src="https://www.rossharper.net/img/wp-imports/2012/03/Pinning.png" alt="Pinning" title="Pinning" /></p>
-
-<h3 id="other-resources--notes">Other resources &amp; notes</h3>
-
-<p>Some more handy resources:</p>
-
-<ul>
-  <li><a href="http://dev.twitter.com/docs/tweet-button" title="Twitter Tweet Button at Twitter" target="_blank">Twitter Tweet Button</a></li>
-  <li><a href="http://developers.facebook.com/docs/share/" title="Facebook Share Button at Facebook Developers" target="_blank">Facebook Share Button</a> — Note that this is deprecated in favour of the <a href="http://developers.facebook.com/docs/reference/plugins/like/" title="Facebook Like Button at Facebook Developers" target="_blank">Like button</a>. I used it because I preferred it at the time. I plan on upgrading this to use Facebook’s latest sharing tools.</li>
-  <li><a href="http://www.google.com/webmasters/+1/button/" title="Google +1 Button at Google" target="_blank">Google+ +1 Button</a></li>
-  <li>For Facebook sharing, I am also using the <a href="http://blog.ashfame.com/2011/02/wordpress-plugin-fix-facebook-like-thumbnail/" title="Facebook Like Thumbnail plugin by Ashish Saini" target="_blank">Facebook Like Thumbnail plugin</a> by <a href="http://blog.ashfame.com/" title="Ashish Saini's blog" target="_blank">Ashish Saini</a>, which helps by using the featured image of the post for Facebook sharing.</li>
-</ul>
-
-<h3 id="update">UPDATE</h3>
-
-<p>You may have noticed that I have since removed the Facebook and Google+ sharing buttons. My main reason for this was because the formatting had gone wrong on them, but also for performance reasons — there are just to many scripts running on each page. I’ll probably remove Pinterest soon and just leave Twitter.</p>
-
-    <footer>
-    <div class="postfooterfeaturebox">
-        <span class="postfootertitle">Categories:</span>&nbsp;<a href="https://www.rossharper.net/categories/general">General</a>, <a href="https://www.rossharper.net/categories/programming">Programming</a>, <a href="https://www.rossharper.net/categories/technology">Technology</a>, <a href="https://www.rossharper.net/categories/web">Web</a>, <a href="https://www.rossharper.net/categories/wordpress">Wordpress</a>
-        <br />
-        <span class="postfootertitle">Tags:</span>&nbsp;<a href="https://www.rossharper.net/tags/1">+1</a>, <a href="https://www.rossharper.net/tags/blog">blog</a>, <a href="https://www.rossharper.net/tags/blogging">Blogging</a>, <a href="https://www.rossharper.net/tags/button">Button</a>, <a href="https://www.rossharper.net/tags/css">CSS</a>, <a href="https://www.rossharper.net/tags/facebook">Facebook</a>, <a href="https://www.rossharper.net/tags/google">Google+</a>, <a href="https://www.rossharper.net/tags/html">HTML</a>, <a href="https://www.rossharper.net/tags/php">PHP</a>, <a href="https://www.rossharper.net/tags/pin-it">Pin It</a>, <a href="https://www.rossharper.net/tags/pinterest">Pinterest</a>, <a href="https://www.rossharper.net/tags/programming">Programming</a>, <a href="https://www.rossharper.net/tags/sharing">Sharing</a>, <a href="https://www.rossharper.net/tags/social">Social</a>, <a href="https://www.rossharper.net/tags/technology">Technology</a>, <a href="https://www.rossharper.net/tags/theme">theme</a>, <a href="https://www.rossharper.net/tags/twitter">Twitter</a>, <a href="https://www.rossharper.net/tags/web">Web</a>, <a href="https://www.rossharper.net/tags/website">Website</a>, <a href="https://www.rossharper.net/tags/wordpress">wordpress</a>
-    </div>
-    <div class="paginationlinks clearfix">
-        <a href="https://www.rossharper.net/2012/03/rewind-amsterdam/" class="paginationprev">&larr; Previous post: Rewind: Amsterdam</a>
-        <a href="https://www.rossharper.net/2012/03/queen-elizabeth-ii-opens-mediacityuk/" class="paginationnext">Next post: Queen Elizabeth II Opens MediaCity:UK &rarr;</a>
-    </div>
-</footer>
-  </article>
-
-    </main>
-    <footer>
-      <div class="footlinkscontainer clearfix">
-        <div class="footlinks">
-          <h2 class="footlinktitle">Archive</h2>
-          <ul>
-            <li><a href="https://www.rossharper.net/2017/02/">February 2017</a></li>
-            <li><a href="https://www.rossharper.net/2016/02/">February 2016</a></li>
-            <li><a href="https://www.rossharper.net/2015/11/">November 2015</a></li>
-            <li><a href="https://www.rossharper.net/2014/05/">May 2014</a></li>
-            <li><a href="https://www.rossharper.net/2013/01/">January 2013</a></li>
-            <li><a href="https://www.rossharper.net/2012/01/">January 2012</a></li>
-            <li><a href="https://www.rossharper.net/2012/02/">February 2012</a></li>
-            <li><a href="https://www.rossharper.net/2012/03/">March 2012</a></li>
-            <li><a href="https://www.rossharper.net/2012/04/">April 2012</a></li>
-            <li><a href="https://www.rossharper.net/2011/06/">June 2011</a></li>
-            <li><a href="https://www.rossharper.net/2011/11/">November 2011</a></li>
-            
-          </ul>
-        </div>
-        <div class="footlinks">
-          <h2 class="footlinktitle">Categories</h2>
-          <ul>
-            <li><a href="https://www.rossharper.net/category/photography">Photography</a></li>
-            <li><a href="https://www.rossharper.net/category/travel">Travel</a></li>
-            <li><a href="https://www.rossharper.net/category/wild-camping">Wild Camping</a></li>
-            <li><a href="https://www.rossharper.net/category/rewind-from-the-archive">Rewind: From The Archive</a></li>
-            <li><a href="https://www.rossharper.net/category/general">General</a></li>
-            <li><a href="https://www.rossharper.net/category/programming">Programming</a></li>
-            <li><a href="https://www.rossharper.net/category/technology">Technology</a></li>
-            <li><a href="https://www.rossharper.net/category/web">Web</a></li>
-            <li><a href="https://www.rossharper.net/category/wordpress">Wordpress</a></li>
-            <li><a href="https://www.rossharper.net/category/cycling">Cycling</a></li>
-            <li><a href="https://www.rossharper.net/category/mountain-biking">Mountain Biking</a></li>
-            <li><a href="https://www.rossharper.net/category/heating-project">Heating Project</a></li>
-            <li><a href="https://www.rossharper.net/category/iot">IoT</a></li>
-            
-          </ul>
-        </div>
-        <div class="footlinks">
-          <h2 class="footlinktitle">Tags</h2>
-          <a style='font-size: 70%' href='https://www.rossharper.net/tag/alderman-s-brow'>Alderman's Brow</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/alderman-s-hill'>Alderman's Hill</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/archive'>Archive</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/bbc'>BBC</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/bicycle'>Bicycle</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/bike'>Bike</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/cycling'>Cycling</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/dovestone-edge'>Dovestone Edge</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/eglin-lane'>Eglin Lane</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/frozen'>Frozen</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/galloway'>Galloway</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/galloway-forest-park'>Galloway Forest Park</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/hills'>Hills</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/holcombe-moor'>Holcombe Moor</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/hooden-s-hill'>Hooden's Hill</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/lake'>Lake</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/memorial'>Memorial</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/peak-district'>Peak District</a>
-<a style='font-size: 170%' href='https://www.rossharper.net/tag/photography'>Photography</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/programming'>Programming</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/ramsbottom'>Ramsbottom</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/reservoir'>Reservoir</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/rewind'>Rewind</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/roman-numerals'>Roman Numerals</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/saddleworth-moor'>Saddleworth Moor</a>
-<a style='font-size: 141%' href='https://www.rossharper.net/tag/scotland'>Scotland</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/scout-moor'>Scout Moor</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/sheep'>Sheep</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/snow'>Snow</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/starstax'>StarStaX</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/tdd'>TDD</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/tent'>Tent</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/the-dungeon-hills'>The Dungeon Hills</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/travel'>Travel</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/unit-tests'>Unit Tests</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/walking'>Walking</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/wild-camping'>Wild Camping</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/winter'>Winter</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/wirral-way'>Wirral Way</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/camping'>camping</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/glentress'>glentress</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/long-exposure'>long exposure</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/stars'>stars</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/startrails'>startrails</a>
-
-        </div>
       </div>
-      <div class="footercopy">Copyright &copy; Ross Harper</div>
-    </footer>
+      <div class="footlinks">
+        <h2 class="footlinktitle">Categories</h2>
+        <ul>
+          <li><a href="https://www.rossharper.net/category/photography">Photography</a></li>
+          <li><a href="https://www.rossharper.net/category/travel">Travel</a></li>
+          <li><a href="https://www.rossharper.net/category/wild-camping">Wild Camping</a></li>
+          <li><a href="https://www.rossharper.net/category/rewind-from-the-archive">Rewind: From The Archive</a></li>
+          <li><a href="https://www.rossharper.net/category/general">General</a></li>
+          <li><a href="https://www.rossharper.net/category/programming">Programming</a></li>
+          <li><a href="https://www.rossharper.net/category/technology">Technology</a></li>
+          <li><a href="https://www.rossharper.net/category/web">Web</a></li>
+          <li><a href="https://www.rossharper.net/category/wordpress">Wordpress</a></li>
+          <li><a href="https://www.rossharper.net/category/cycling">Cycling</a></li>
+          <li><a href="https://www.rossharper.net/category/mountain-biking">Mountain Biking</a></li>
+          <li><a href="https://www.rossharper.net/category/heating-project">Heating Project</a></li>
+          <li><a href="https://www.rossharper.net/category/iot">IoT</a></li>
+        </ul>
+      </div>
+      <div class="footlinks">
+        <h2 class="footlinktitle">Tags</h2>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/alderman-s-brow'>Alderman's Brow</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/alderman-s-hill'>Alderman's Hill</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/archive'>Archive</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/bbc'>BBC</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/bicycle'>Bicycle</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/bike'>Bike</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/cycling'>Cycling</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/dovestone-edge'>Dovestone Edge</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/eglin-lane'>Eglin Lane</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/frozen'>Frozen</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/galloway'>Galloway</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/galloway-forest-park'>Galloway Forest Park</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/hills'>Hills</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/holcombe-moor'>Holcombe Moor</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/hooden-s-hill'>Hooden's Hill</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/lake'>Lake</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/memorial'>Memorial</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/peak-district'>Peak District</a>
+        <a style='font-size: 170%' href='https://www.rossharper.net/tag/photography'>Photography</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/programming'>Programming</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/ramsbottom'>Ramsbottom</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/reservoir'>Reservoir</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/rewind'>Rewind</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/roman-numerals'>Roman Numerals</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/saddleworth-moor'>Saddleworth Moor</a>
+        <a style='font-size: 141%' href='https://www.rossharper.net/tag/scotland'>Scotland</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/scout-moor'>Scout Moor</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/sheep'>Sheep</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/snow'>Snow</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/starstax'>StarStaX</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/tdd'>TDD</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/tent'>Tent</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/the-dungeon-hills'>The Dungeon Hills</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/travel'>Travel</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/unit-tests'>Unit Tests</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/walking'>Walking</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/wild-camping'>Wild Camping</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/winter'>Winter</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/wirral-way'>Wirral Way</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/camping'>camping</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/glentress'>glentress</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/long-exposure'>long exposure</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/stars'>stars</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/startrails'>startrails</a>
+      </div>
+    </div>
+    <div class="footercopy">Copyright &copy; Ross Harper</div>
+  </footer>
 </body>
 </html>

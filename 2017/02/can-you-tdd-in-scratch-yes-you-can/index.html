@@ -1,182 +1,157 @@
-<!doctype html> 
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Can you TDD in Scratch? Yes, you can! | 
-      rossharper.net</title>
-    <link rel="stylesheet" href="https://www.rossharper.net/css/style.css">
-    <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">    
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Can you TDD in Scratch? Yes, you can!" />
-    <meta property="og:description" content="One day, the crazy thought popped into my head: "Can you TDD in Scratch?". I did a brief Google, and couldn't find any examples of TDD in Scratch. So I decided to set out to figure out if it could be done..." />
-    <meta property="article:published_time" content="2017-02-24 18:14:48 +0000" />
-    
-    <meta property="article:modified_time" content="2020-04-18 17:58:58 +0100" />
-    
-    <meta property="og:image" content="" />
-    <meta property="og:url" content="https://www.rossharper.net/2017/02/can-you-tdd-in-scratch-yes-you-can/" />
-    
-    <meta property="og:site_name" content="rossharper.net" />
-    <meta property="og:locale" content="en_GB" />
-    
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:text:title" content="Can you TDD in Scratch? Yes, you can!" />
-    <meta name="twitter:description" content="One day, the crazy thought popped into my head: "Can you TDD in Scratch?". I did a brief Google, and couldn't find any examples of TDD in Scratch. So I decided to set out to figure out if it could ..." />
-    <meta name="twitter:url" content="https://www.rossharper.net/2017/02/can-you-tdd-in-scratch-yes-you-can/" />
-    <meta name="twitter:image" content="" />
-    
-  </head>
-  <body>
-
-    <header id="bannerheader">
+    <title>Can you TDD in Scratch? Yes, you can! | rossharper.net</title>
+  </title>
+  <link rel="stylesheet" href="https://www.rossharper.net/css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Can you TDD in Scratch? Yes, you can!" />
+  <meta property="og:description" content="One day, the crazy thought popped into my head: "Can you TDD in Scratch?". I did a brief Google, and couldn't find any examples of TDD in Scratch. So I decided to set out to figure out if it could be done..." />
+  <meta property="article:published_time" content="2017-02-24 18:14:48 +0000" />
+  <meta property="article:modified_time" content="2020-04-18 17:58:58 +0100" />
+  <meta property="og:image" content="" />
+  <meta property="og:url" content="https://www.rossharper.net/2017/02/can-you-tdd-in-scratch-yes-you-can/" />
+  <meta property="og:site_name" content="rossharper.net" />
+  <meta property="og:locale" content="en_GB" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:text:title" content="Can you TDD in Scratch? Yes, you can!" />
+  <meta name="twitter:description" content="One day, the crazy thought popped into my head: "Can you TDD in Scratch?". I did a brief Google, and couldn't find any examples of TDD in Scratch. So I decided to set out to figure out if it could ..." />
+  <meta name="twitter:url" content="https://www.rossharper.net/2017/02/can-you-tdd-in-scratch-yes-you-can/" />
+  <meta name="twitter:image" content="" />
+</head>
+<body>
+  <header id="bannerheader">
     <div id="bannerheading">
-        <a href="https://www.rossharper.net">rossharper.net</a>
+      <a href="https://www.rossharper.net">rossharper.net</a>
     </div>
-</header>
-    <nav>
+  </header>
+  <nav>
     <div id="navitems">
+      <ul>
+        <li><a href="https://www.rossharper.net/">Home</a></li>
+        <li><a href="https://www.rossharper.net/about">About</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <article>
+      <header>
+        <h2>Can you TDD in Scratch? Yes, you can!</h2>
+        <p class="postdate">Posted on Friday, 24th February 2017</p>
+      </header>
+      <p>Can you TDD in Scratch?</p>
+      <p>TL;DR: yes, you can!</p>
+      <h3 id="overview">Overview</h3>
+      <p>In our team, we use a Test-Driven Development (TDD) approach when writing code. I’m a supporter of this approach and its many benefits. I won’t go into the benefits here — you can <a href="https://www.google.co.uk/search?q=test%20driven%20development" title="Search Google for test driven development">Google many articles on the subject</a> (other search providers are available).</p>
+      <p><a href="https://scratch.mit.edu" title="Scratch website">Scratch</a>, from MIT, is essentially a visual programming environment that <em>“helps young people learn to think creatively, reason systematically, and work collaboratively — essential skills for life in the 21st century”</em>. There’s a growing movement around teaching kids to code, that will hopefully play an important part in solving the skills and diversity shortages our industry has.</p>
+      <p>One day, the crazy thought popped into my head: <em>“Can you TDD in Scratch?”</em>. I did a brief Google, and couldn’t find any examples of TDD in Scratch.</p>
+      <p>So, in my “10% time”, I looked into doing some TDD in Scratch. For my first experiment, I implemented the algorithm for the <a href="http://codingdojo.org/kata/RomanNumerals/" title="Description of the Roman Numerals Kata on CodingDojo">Roman Numerals Kata</a>. I cheated a little here, by implementing the algorithm first and then put a test around it afterward (this <em>isn’t</em> TDD!).</p>
+      <p><img src="https://raw.githubusercontent.com/rossharper/ScratchTDD/master/RomanNumerals/Roman.png" alt="Scratch running the Roman Numerals Kata" title="Scratch running the Roman Numerals Kata" /></p>
+      <p>This at least proved that it is possible to separate my algorithm logic and have tests around it. So next I decided to do some actual TDD in Scratch…</p>
+      <p>Read the full post in the GitHub readme: <a href="https://github.com/rossharper/ScratchTDD/blob/master/README.md">https://github.com/rossharper/ScratchTDD/blob/master/README.md</a></p>
+      <footer>
+        <div class="postfooterfeaturebox">
+          <span class="postfootertitle">Categories:</span>&nbsp;<a href="https://www.rossharper.net/categories/general">General</a>, <a href="https://www.rossharper.net/categories/technology">Technology</a>, <a href="https://www.rossharper.net/categories/programming">Programming</a>
+          <br />
+          <span class="postfootertitle">Tags:</span>&nbsp;<a href="https://www.rossharper.net/tags/programming">Programming</a>, <a href="https://www.rossharper.net/tags/tdd">TDD</a>, <a href="https://www.rossharper.net/tags/scratch">Scratch</a>, <a href="https://www.rossharper.net/tags/unit-tests">Unit Tests</a>, <a href="https://www.rossharper.net/tags/roman-numerals">Roman Numerals</a>
+        </div>
+        <div class="paginationlinks clearfix">
+          <a href="https://www.rossharper.net/2016/02/parameterized-junit4-unit-tests-in-kotlin/" class="paginationprev">&larr; Previous post: Parameterized JUnit4 Unit Tests in Kotlin</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+  <footer>
+    <div class="footlinkscontainer clearfix">
+      <div class="footlinks">
+        <h2 class="footlinktitle">Archive</h2>
         <ul>
-            <li><a href="https://www.rossharper.net/">Home</a></li>
-            <li><a href="https://www.rossharper.net/about">About</a></li>
+          <li><a href="https://www.rossharper.net/2017/02/">February 2017</a></li>
+          <li><a href="https://www.rossharper.net/2016/02/">February 2016</a></li>
+          <li><a href="https://www.rossharper.net/2015/11/">November 2015</a></li>
+          <li><a href="https://www.rossharper.net/2014/05/">May 2014</a></li>
+          <li><a href="https://www.rossharper.net/2013/01/">January 2013</a></li>
+          <li><a href="https://www.rossharper.net/2012/01/">January 2012</a></li>
+          <li><a href="https://www.rossharper.net/2012/02/">February 2012</a></li>
+          <li><a href="https://www.rossharper.net/2012/03/">March 2012</a></li>
+          <li><a href="https://www.rossharper.net/2012/04/">April 2012</a></li>
+          <li><a href="https://www.rossharper.net/2011/06/">June 2011</a></li>
+          <li><a href="https://www.rossharper.net/2011/11/">November 2011</a></li>
         </ul>
-    </div>
-</nav>
-
-
-    <main>
-
-  
-  <article>
-    <header>
-    <h2>Can you TDD in Scratch? Yes, you can!</h2>
-    <p class="postdate">Posted on Friday, 24th February 2017</p>
-</header>
-    <p>Can you TDD in Scratch?</p>
-
-<p>TL;DR: yes, you can!</p>
-
-<h3 id="overview">Overview</h3>
-
-<p>In our team, we use a Test-Driven Development (TDD) approach when writing code. I’m a supporter of this approach and its many benefits. I won’t go into the benefits here — you can <a href="https://www.google.co.uk/search?q=test%20driven%20development" title="Search Google for test driven development">Google many articles on the subject</a> (other search providers are available).</p>
-
-<p><a href="https://scratch.mit.edu" title="Scratch website">Scratch</a>, from MIT, is essentially a visual programming environment that <em>“helps young people learn to think creatively, reason systematically, and work collaboratively — essential skills for life in the 21st century”</em>. There’s a growing movement around teaching kids to code, that will hopefully play an important part in solving the skills and diversity shortages our industry has.</p>
-
-<p>One day, the crazy thought popped into my head: <em>“Can you TDD in Scratch?”</em>. I did a brief Google, and couldn’t find any examples of TDD in Scratch.</p>
-
-<p>So, in my “10% time”, I looked into doing some TDD in Scratch. For my first experiment, I implemented the algorithm for the <a href="http://codingdojo.org/kata/RomanNumerals/" title="Description of the Roman Numerals Kata on CodingDojo">Roman Numerals Kata</a>. I cheated a little here, by implementing the algorithm first and then put a test around it afterward (this <em>isn’t</em> TDD!).</p>
-
-<p><img src="https://raw.githubusercontent.com/rossharper/ScratchTDD/master/RomanNumerals/Roman.png" alt="Scratch running the Roman Numerals Kata" title="Scratch running the Roman Numerals Kata" /></p>
-
-<p>This at least proved that it is possible to separate my algorithm logic and have tests around it. So next I decided to do some actual TDD in Scratch…</p>
-
-<p>Read the full post in the GitHub readme: <a href="https://github.com/rossharper/ScratchTDD/blob/master/README.md">https://github.com/rossharper/ScratchTDD/blob/master/README.md</a></p>
-
-    <footer>
-    <div class="postfooterfeaturebox">
-        <span class="postfootertitle">Categories:</span>&nbsp;<a href="https://www.rossharper.net/categories/general">General</a>, <a href="https://www.rossharper.net/categories/technology">Technology</a>, <a href="https://www.rossharper.net/categories/programming">Programming</a>
-        <br />
-        <span class="postfootertitle">Tags:</span>&nbsp;<a href="https://www.rossharper.net/tags/programming">Programming</a>, <a href="https://www.rossharper.net/tags/tdd">TDD</a>, <a href="https://www.rossharper.net/tags/scratch">Scratch</a>, <a href="https://www.rossharper.net/tags/unit-tests">Unit Tests</a>, <a href="https://www.rossharper.net/tags/roman-numerals">Roman Numerals</a>
-    </div>
-    <div class="paginationlinks clearfix">
-        <a href="https://www.rossharper.net/2016/02/parameterized-junit4-unit-tests-in-kotlin/" class="paginationprev">&larr; Previous post: Parameterized JUnit4 Unit Tests in Kotlin</a>
-        
-    </div>
-</footer>
-  </article>
-
-    </main>
-    <footer>
-      <div class="footlinkscontainer clearfix">
-        <div class="footlinks">
-          <h2 class="footlinktitle">Archive</h2>
-          <ul>
-            <li><a href="https://www.rossharper.net/2017/02/">February 2017</a></li>
-            <li><a href="https://www.rossharper.net/2016/02/">February 2016</a></li>
-            <li><a href="https://www.rossharper.net/2015/11/">November 2015</a></li>
-            <li><a href="https://www.rossharper.net/2014/05/">May 2014</a></li>
-            <li><a href="https://www.rossharper.net/2013/01/">January 2013</a></li>
-            <li><a href="https://www.rossharper.net/2012/01/">January 2012</a></li>
-            <li><a href="https://www.rossharper.net/2012/02/">February 2012</a></li>
-            <li><a href="https://www.rossharper.net/2012/03/">March 2012</a></li>
-            <li><a href="https://www.rossharper.net/2012/04/">April 2012</a></li>
-            <li><a href="https://www.rossharper.net/2011/06/">June 2011</a></li>
-            <li><a href="https://www.rossharper.net/2011/11/">November 2011</a></li>
-            
-          </ul>
-        </div>
-        <div class="footlinks">
-          <h2 class="footlinktitle">Categories</h2>
-          <ul>
-            <li><a href="https://www.rossharper.net/category/photography">Photography</a></li>
-            <li><a href="https://www.rossharper.net/category/travel">Travel</a></li>
-            <li><a href="https://www.rossharper.net/category/wild-camping">Wild Camping</a></li>
-            <li><a href="https://www.rossharper.net/category/rewind-from-the-archive">Rewind: From The Archive</a></li>
-            <li><a href="https://www.rossharper.net/category/general">General</a></li>
-            <li><a href="https://www.rossharper.net/category/programming">Programming</a></li>
-            <li><a href="https://www.rossharper.net/category/technology">Technology</a></li>
-            <li><a href="https://www.rossharper.net/category/web">Web</a></li>
-            <li><a href="https://www.rossharper.net/category/wordpress">Wordpress</a></li>
-            <li><a href="https://www.rossharper.net/category/cycling">Cycling</a></li>
-            <li><a href="https://www.rossharper.net/category/mountain-biking">Mountain Biking</a></li>
-            <li><a href="https://www.rossharper.net/category/heating-project">Heating Project</a></li>
-            <li><a href="https://www.rossharper.net/category/iot">IoT</a></li>
-            
-          </ul>
-        </div>
-        <div class="footlinks">
-          <h2 class="footlinktitle">Tags</h2>
-          <a style='font-size: 70%' href='https://www.rossharper.net/tag/alderman-s-brow'>Alderman's Brow</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/alderman-s-hill'>Alderman's Hill</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/archive'>Archive</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/bbc'>BBC</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/bicycle'>Bicycle</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/bike'>Bike</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/cycling'>Cycling</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/dovestone-edge'>Dovestone Edge</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/eglin-lane'>Eglin Lane</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/frozen'>Frozen</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/galloway'>Galloway</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/galloway-forest-park'>Galloway Forest Park</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/hills'>Hills</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/holcombe-moor'>Holcombe Moor</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/hooden-s-hill'>Hooden's Hill</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/lake'>Lake</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/memorial'>Memorial</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/peak-district'>Peak District</a>
-<a style='font-size: 170%' href='https://www.rossharper.net/tag/photography'>Photography</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/programming'>Programming</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/ramsbottom'>Ramsbottom</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/reservoir'>Reservoir</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/rewind'>Rewind</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/roman-numerals'>Roman Numerals</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/saddleworth-moor'>Saddleworth Moor</a>
-<a style='font-size: 141%' href='https://www.rossharper.net/tag/scotland'>Scotland</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/scout-moor'>Scout Moor</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/sheep'>Sheep</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/snow'>Snow</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/starstax'>StarStaX</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/tdd'>TDD</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/tent'>Tent</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/the-dungeon-hills'>The Dungeon Hills</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/travel'>Travel</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/unit-tests'>Unit Tests</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/walking'>Walking</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/wild-camping'>Wild Camping</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/winter'>Winter</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/wirral-way'>Wirral Way</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/camping'>camping</a>
-<a style='font-size: 70%' href='https://www.rossharper.net/tag/glentress'>glentress</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/long-exposure'>long exposure</a>
-<a style='font-size: 126%' href='https://www.rossharper.net/tag/stars'>stars</a>
-<a style='font-size: 106%' href='https://www.rossharper.net/tag/startrails'>startrails</a>
-
-        </div>
       </div>
-      <div class="footercopy">Copyright &copy; Ross Harper</div>
-    </footer>
+      <div class="footlinks">
+        <h2 class="footlinktitle">Categories</h2>
+        <ul>
+          <li><a href="https://www.rossharper.net/category/photography">Photography</a></li>
+          <li><a href="https://www.rossharper.net/category/travel">Travel</a></li>
+          <li><a href="https://www.rossharper.net/category/wild-camping">Wild Camping</a></li>
+          <li><a href="https://www.rossharper.net/category/rewind-from-the-archive">Rewind: From The Archive</a></li>
+          <li><a href="https://www.rossharper.net/category/general">General</a></li>
+          <li><a href="https://www.rossharper.net/category/programming">Programming</a></li>
+          <li><a href="https://www.rossharper.net/category/technology">Technology</a></li>
+          <li><a href="https://www.rossharper.net/category/web">Web</a></li>
+          <li><a href="https://www.rossharper.net/category/wordpress">Wordpress</a></li>
+          <li><a href="https://www.rossharper.net/category/cycling">Cycling</a></li>
+          <li><a href="https://www.rossharper.net/category/mountain-biking">Mountain Biking</a></li>
+          <li><a href="https://www.rossharper.net/category/heating-project">Heating Project</a></li>
+          <li><a href="https://www.rossharper.net/category/iot">IoT</a></li>
+        </ul>
+      </div>
+      <div class="footlinks">
+        <h2 class="footlinktitle">Tags</h2>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/alderman-s-brow'>Alderman's Brow</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/alderman-s-hill'>Alderman's Hill</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/archive'>Archive</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/bbc'>BBC</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/bicycle'>Bicycle</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/bike'>Bike</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/cycling'>Cycling</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/dovestone-edge'>Dovestone Edge</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/eglin-lane'>Eglin Lane</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/frozen'>Frozen</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/galloway'>Galloway</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/galloway-forest-park'>Galloway Forest Park</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/hills'>Hills</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/holcombe-moor'>Holcombe Moor</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/hooden-s-hill'>Hooden's Hill</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/lake'>Lake</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/memorial'>Memorial</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/peak-district'>Peak District</a>
+        <a style='font-size: 170%' href='https://www.rossharper.net/tag/photography'>Photography</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/programming'>Programming</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/ramsbottom'>Ramsbottom</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/reservoir'>Reservoir</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/rewind'>Rewind</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/roman-numerals'>Roman Numerals</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/saddleworth-moor'>Saddleworth Moor</a>
+        <a style='font-size: 141%' href='https://www.rossharper.net/tag/scotland'>Scotland</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/scout-moor'>Scout Moor</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/sheep'>Sheep</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/snow'>Snow</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/starstax'>StarStaX</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/tdd'>TDD</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/tent'>Tent</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/the-dungeon-hills'>The Dungeon Hills</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/travel'>Travel</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/unit-tests'>Unit Tests</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/walking'>Walking</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/wild-camping'>Wild Camping</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/winter'>Winter</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/wirral-way'>Wirral Way</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/camping'>camping</a>
+        <a style='font-size: 70%' href='https://www.rossharper.net/tag/glentress'>glentress</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/long-exposure'>long exposure</a>
+        <a style='font-size: 126%' href='https://www.rossharper.net/tag/stars'>stars</a>
+        <a style='font-size: 106%' href='https://www.rossharper.net/tag/startrails'>startrails</a>
+      </div>
+    </div>
+    <div class="footercopy">Copyright &copy; Ross Harper</div>
+  </footer>
 </body>
 </html>
